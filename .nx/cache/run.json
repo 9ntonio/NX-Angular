@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx run angular-task:build:production",
+    "startTime": "2025-02-12T21:11:12.718Z",
+    "endTime": "2025-02-12T21:11:17.170Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "angular-task:build:production",
+      "target": "build",
+      "projectName": "angular-task",
+      "hash": "15445638080776214207",
+      "startTime": "2025-02-12T21:11:12.724Z",
+      "endTime": "2025-02-12T21:11:17.170Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}
