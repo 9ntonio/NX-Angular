@@ -23,12 +23,7 @@
           }
         ],
         "styles": ["apps/angular-task/src/styles.scss"],
-        "scripts": [],
-        "server": "apps/angular-task/src/main.server.ts",
-        "prerender": false,
-        "ssr": {
-          "entry": "apps/angular-task/server.ts"
-        }
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -53,6 +48,63 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-task:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-task:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-task:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/angular-task/**/*.ts", "apps/angular-task/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/angular-task"],
+      "options": {
+        "jestConfig": "apps/angular-task/jest.config.ts"
+      }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/angular-task/server",
+        "main": "apps/angular-task/src/main.server.ts",
+        "tsConfig": "apps/angular-task/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "buildTarget": "angular-task:build:production",
+        "serverTarget": "angular-task:server:production"
+      }
     }
   }
 }

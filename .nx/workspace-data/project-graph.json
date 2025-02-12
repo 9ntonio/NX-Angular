@@ -190,41 +190,16 @@
         "root": "apps/angular-task",
         "targets": {
           "lint": {
-            "cache": true,
-            "options": {
-              "cwd": "apps/angular-task",
-              "command": "eslint ."
-            },
-            "inputs": [
-              "default",
-              "^default",
-              "{workspaceRoot}/.eslintrc.json",
-              "{projectRoot}/.eslintrc.json",
-              "{workspaceRoot}/tools/eslint-rules/**/*",
-              {
-                "externalDependencies": [
-                  "eslint"
-                ]
-              }
-            ],
+            "executor": "@nx/linter:eslint",
             "outputs": [
               "{options.outputFile}"
             ],
-            "metadata": {
-              "technologies": [
-                "eslint"
-              ],
-              "description": "Runs ESLint on project",
-              "help": {
-                "command": "npx eslint --help",
-                "example": {
-                  "options": {
-                    "max-warnings": 0
-                  }
-                }
-              }
+            "options": {
+              "lintFilePatterns": [
+                "apps/angular-task/**/*.ts",
+                "apps/angular-task/**/*.html"
+              ]
             },
-            "executor": "nx:run-commands",
             "configurations": {},
             "parallelism": true
           },
@@ -251,12 +226,7 @@
               "styles": [
                 "apps/angular-task/src/styles.scss"
               ],
-              "scripts": [],
-              "server": "apps/angular-task/src/main.server.ts",
-              "prerender": false,
-              "ssr": {
-                "entry": "apps/angular-task/server.ts"
-              }
+              "scripts": []
             },
             "configurations": {
               "production": {
@@ -290,6 +260,79 @@
               "production",
               "^production"
             ]
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "buildTarget": "angular-task:build:production"
+              },
+              "development": {
+                "buildTarget": "angular-task:build:development"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {},
+            "parallelism": true
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "buildTarget": "angular-task:build"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/apps/angular-task"
+            ],
+            "options": {
+              "jestConfig": "apps/angular-task/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {
+              "ci": {
+                "ci": true,
+                "codeCoverage": true
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ]
+          },
+          "server": {
+            "executor": "@angular-devkit/build-angular:server",
+            "options": {
+              "outputPath": "dist/apps/angular-task/server",
+              "main": "apps/angular-task/src/main.server.ts",
+              "tsConfig": "apps/angular-task/tsconfig.server.json"
+            },
+            "configurations": {
+              "production": {
+                "outputHashing": "media"
+              },
+              "development": {
+                "optimization": false,
+                "sourceMap": true
+              }
+            },
+            "defaultConfiguration": "production",
+            "parallelism": true
+          },
+          "prerender": {
+            "executor": "@angular-devkit/build-angular:prerender",
+            "options": {
+              "buildTarget": "angular-task:build:production",
+              "serverTarget": "angular-task:server:production"
+            },
+            "configurations": {},
+            "parallelism": true
           }
         },
         "name": "angular-task",

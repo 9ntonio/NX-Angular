@@ -4326,7 +4326,10 @@ function removeEventListeners(container, eventTypes, earlyEventHandler, capture)
   }
 }
 var MOUSE_SPECIAL_SUPPORT = false;
-var _EventContract = class _EventContract {
+var EventContract = class _EventContract {
+  static {
+    this.MOUSE_SPECIAL_SUPPORT = MOUSE_SPECIAL_SUPPORT;
+  }
   constructor(containerManager) {
     this.eventHandlers = {};
     this.browserEventTypeToExtraEventTypes = {};
@@ -4484,8 +4487,6 @@ var _EventContract = class _EventContract {
     }
   }
 };
-_EventContract.MOUSE_SPECIAL_SUPPORT = MOUSE_SPECIAL_SUPPORT;
-var EventContract = _EventContract;
 function getAppScopedQueuedEventInfos(appId, dataContainer = window) {
   return getQueuedEventInfos(dataContainer._ejsas?.[appId]);
 }
@@ -8310,7 +8311,13 @@ function createInjectorWithoutInjectorInstances(defType, parent = null, addition
   name = name || (typeof defType === "object" ? void 0 : stringify(defType));
   return new R3Injector(providers, parent || getNullInjector(), name || null, scopes);
 }
-var _Injector = class _Injector {
+var Injector = class _Injector {
+  static {
+    this.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND;
+  }
+  static {
+    this.NULL = new NullInjector();
+  }
   static create(options, parent) {
     if (Array.isArray(options)) {
       return createInjector({
@@ -8323,16 +8330,17 @@ var _Injector = class _Injector {
       }, options.parent, options.providers, name);
     }
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _Injector,
+      providedIn: "any",
+      factory: () => ɵɵinject(INJECTOR$1)
+    });
+  }
+  static {
+    this.__NG_ELEMENT_ID__ = -1;
+  }
 };
-_Injector.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND;
-_Injector.NULL = new NullInjector();
-_Injector.ɵprov = ɵɵdefineInjectable({
-  token: _Injector,
-  providedIn: "any",
-  factory: () => ɵɵinject(INJECTOR$1)
-});
-_Injector.__NG_ELEMENT_ID__ = -1;
-var Injector = _Injector;
 var HostAttributeToken = class {
   constructor(attributeName) {
     this.attributeName = attributeName;
@@ -8372,11 +8380,14 @@ function getOriginalError(error) {
   return error[ERROR_ORIGINAL_ERROR];
 }
 var SCHEDULE_IN_ROOT_ZONE_DEFAULT = true;
-var _DestroyRef = class _DestroyRef {
+var DestroyRef = class {
+  static {
+    this.__NG_ELEMENT_ID__ = injectDestroyRef;
+  }
+  static {
+    this.__NG_ENV_ID__ = (injector) => injector;
+  }
 };
-_DestroyRef.__NG_ELEMENT_ID__ = injectDestroyRef;
-_DestroyRef.__NG_ENV_ID__ = (injector) => injector;
-var DestroyRef = _DestroyRef;
 var NodeInjectorDestroyRef = class extends DestroyRef {
   constructor(_lView) {
     super();
@@ -8390,7 +8401,7 @@ var NodeInjectorDestroyRef = class extends DestroyRef {
 function injectDestroyRef() {
   return new NodeInjectorDestroyRef(getLView());
 }
-var _PendingTasks = class _PendingTasks {
+var PendingTasks = class _PendingTasks {
   constructor() {
     this.taskId = 0;
     this.pendingTasks = /* @__PURE__ */ new Set();
@@ -8419,14 +8430,15 @@ var _PendingTasks = class _PendingTasks {
       this.hasPendingTasks.next(false);
     }
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _PendingTasks,
+      providedIn: "root",
+      factory: () => new _PendingTasks()
+    });
+  }
 };
-_PendingTasks.ɵprov = ɵɵdefineInjectable({
-  token: _PendingTasks,
-  providedIn: "root",
-  factory: () => new _PendingTasks()
-});
-var PendingTasks = _PendingTasks;
-var _ExperimentalPendingTasks = class _ExperimentalPendingTasks {
+var ExperimentalPendingTasks = class _ExperimentalPendingTasks {
   constructor() {
     this.internalPendingTasks = inject(PendingTasks);
   }
@@ -8438,13 +8450,14 @@ var _ExperimentalPendingTasks = class _ExperimentalPendingTasks {
     const taskId = this.internalPendingTasks.add();
     return () => this.internalPendingTasks.remove(taskId);
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ExperimentalPendingTasks,
+      providedIn: "root",
+      factory: () => new _ExperimentalPendingTasks()
+    });
+  }
 };
-_ExperimentalPendingTasks.ɵprov = ɵɵdefineInjectable({
-  token: _ExperimentalPendingTasks,
-  providedIn: "root",
-  factory: () => new _ExperimentalPendingTasks()
-});
-var ExperimentalPendingTasks = _ExperimentalPendingTasks;
 var EventEmitter_ = class extends Subject {
   constructor(isAsync = false) {
     super();
@@ -8961,20 +8974,24 @@ function injectElementRef() {
 function createElementRef(tNode, lView) {
   return new ElementRef(getNativeByTNode(tNode, lView));
 }
-var _ElementRef = class _ElementRef {
+var ElementRef = class {
   constructor(nativeElement) {
     this.nativeElement = nativeElement;
   }
+  static {
+    this.__NG_ELEMENT_ID__ = injectElementRef;
+  }
 };
-_ElementRef.__NG_ELEMENT_ID__ = injectElementRef;
-var ElementRef = _ElementRef;
 function unwrapElementRef(value) {
   return value instanceof ElementRef ? value.nativeElement : value;
 }
 function symbolIterator() {
   return this._results[Symbol.iterator]();
 }
-var _QueryList = class _QueryList {
+var QueryList = class _QueryList {
+  static {
+    Symbol.iterator;
+  }
   /**
    * Returns `Observable` of `QueryList` notifying the subscriber of changes.
    */
@@ -9097,8 +9114,6 @@ var _QueryList = class _QueryList {
     }
   }
 };
-Symbol.iterator;
-var QueryList = _QueryList;
 var SKIP_HYDRATION_ATTR_NAME = "ngSkipHydration";
 var SKIP_HYDRATION_ATTR_NAME_LOWER_CASE = "ngskiphydration";
 function hasSkipHydrationAttrOnTNode(tNode) {
@@ -9629,10 +9644,17 @@ function initTransferState() {
   }
   return transferState;
 }
-var _TransferState = class _TransferState {
+var TransferState = class _TransferState {
   constructor() {
     this.store = {};
     this.onSerializeCallbacks = {};
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _TransferState,
+      providedIn: "root",
+      factory: initTransferState
+    });
   }
   /**
    * Get the value corresponding to a key. Return `defaultValue` if key is not found.
@@ -9686,12 +9708,6 @@ var _TransferState = class _TransferState {
     return JSON.stringify(this.store).replace(/</g, "\\u003C");
   }
 };
-_TransferState.ɵprov = ɵɵdefineInjectable({
-  token: _TransferState,
-  providedIn: "root",
-  factory: initTransferState
-});
-var TransferState = _TransferState;
 function retrieveTransferredState(doc, appId) {
   const script = doc.getElementById(appId + "-state");
   if (script?.textContent) {
@@ -12929,10 +12945,11 @@ var ViewRef$1 = class {
     updateAncestorTraversalFlagsOnAttach(this._lView);
   }
 };
-var _TemplateRef = class _TemplateRef {
+var TemplateRef = class {
+  static {
+    this.__NG_ELEMENT_ID__ = injectTemplateRef;
+  }
 };
-_TemplateRef.__NG_ELEMENT_ID__ = injectTemplateRef;
-var TemplateRef = _TemplateRef;
 var ViewEngineTemplateRef = TemplateRef;
 var R3TemplateRef = class TemplateRef2 extends ViewEngineTemplateRef {
   constructor(_declarationLView, _declarationTContainer, elementRef) {
@@ -14079,33 +14096,36 @@ var _NullComponentFactoryResolver = class {
     throw noComponentFactoryError(component);
   }
 };
-var _ComponentFactoryResolver$1 = class _ComponentFactoryResolver$1 {
+var ComponentFactoryResolver$1 = class {
+  static {
+    this.NULL = new _NullComponentFactoryResolver();
+  }
 };
-_ComponentFactoryResolver$1.NULL = new _NullComponentFactoryResolver();
-var ComponentFactoryResolver$1 = _ComponentFactoryResolver$1;
 var RendererFactory2 = class {
 };
-var _Renderer2 = class _Renderer2 {
+var Renderer2 = class {
   constructor() {
     this.destroyNode = null;
   }
+  static {
+    this.__NG_ELEMENT_ID__ = () => injectRenderer2();
+  }
 };
-_Renderer2.__NG_ELEMENT_ID__ = () => injectRenderer2();
-var Renderer2 = _Renderer2;
 function injectRenderer2() {
   const lView = getLView();
   const tNode = getCurrentTNode();
   const nodeAtIndex = getComponentLViewByIndex(tNode.index, lView);
   return (isLView(nodeAtIndex) ? nodeAtIndex : lView)[RENDERER];
 }
-var _Sanitizer = class _Sanitizer {
+var Sanitizer = class _Sanitizer {
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _Sanitizer,
+      providedIn: "root",
+      factory: () => null
+    });
+  }
 };
-_Sanitizer.ɵprov = ɵɵdefineInjectable({
-  token: _Sanitizer,
-  providedIn: "root",
-  factory: () => null
-});
-var Sanitizer = _Sanitizer;
 function assertNotInReactiveContext(debugFn, extraContext) {
   if (getActiveConsumer() !== null) {
     throw new RuntimeError(-602, ngDevMode && `${debugFn.name}() cannot be called from within a reactive context.${extraContext ? ` ${extraContext}` : ""}`);
@@ -14297,7 +14317,7 @@ var AfterRenderCallbackHandlerImpl = class {
     this.deferredCallbacks.clear();
   }
 };
-var _AfterRenderEventManager = class _AfterRenderEventManager {
+var AfterRenderEventManager = class _AfterRenderEventManager {
   constructor() {
     this.handler = null;
     this.internalCallbacks = [];
@@ -14321,13 +14341,14 @@ var _AfterRenderEventManager = class _AfterRenderEventManager {
     this.handler = null;
     this.internalCallbacks.length = 0;
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _AfterRenderEventManager,
+      providedIn: "root",
+      factory: () => new _AfterRenderEventManager()
+    });
+  }
 };
-_AfterRenderEventManager.ɵprov = ɵɵdefineInjectable({
-  token: _AfterRenderEventManager,
-  providedIn: "root",
-  factory: () => new _AfterRenderEventManager()
-});
-var AfterRenderEventManager = _AfterRenderEventManager;
 function isModuleWithProviders(value) {
   return value.ngModule !== void 0;
 }
@@ -14908,10 +14929,11 @@ function LifecycleHooksFeature() {
   ngDevMode && assertDefined(tNode, "TNode is required");
   registerPostOrderHooks(getLView()[TVIEW], tNode);
 }
-var _ViewContainerRef = class _ViewContainerRef {
+var ViewContainerRef = class {
+  static {
+    this.__NG_ELEMENT_ID__ = injectViewContainerRef;
+  }
 };
-_ViewContainerRef.__NG_ELEMENT_ID__ = injectViewContainerRef;
-var ViewContainerRef = _ViewContainerRef;
 function injectViewContainerRef() {
   const previousTNode = getCurrentTNode();
   return createContainerRef(previousTNode, getLView());
@@ -16180,7 +16202,7 @@ function createEnvironmentInjector(providers, parent, debugName = null) {
   });
   return adapter.injector;
 }
-var _CachedInjectorService = class _CachedInjectorService {
+var CachedInjectorService = class _CachedInjectorService {
   constructor() {
     this.cachedInjectors = /* @__PURE__ */ new Map();
   }
@@ -16202,13 +16224,14 @@ var _CachedInjectorService = class _CachedInjectorService {
       this.cachedInjectors.clear();
     }
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _CachedInjectorService,
+      providedIn: "environment",
+      factory: () => new _CachedInjectorService()
+    });
+  }
 };
-_CachedInjectorService.ɵprov = ɵɵdefineInjectable({
-  token: _CachedInjectorService,
-  providedIn: "environment",
-  factory: () => new _CachedInjectorService()
-});
-var CachedInjectorService = _CachedInjectorService;
 function isListLikeIterable(obj) {
   if (!isJsObject(obj)) return false;
   return Array.isArray(obj) || !(obj instanceof Map) && // JS Map are iterables but return entries as [k, v]
@@ -16685,7 +16708,7 @@ function onIdle(callback, lView) {
 }
 var _requestIdleCallback = () => typeof requestIdleCallback !== "undefined" ? requestIdleCallback : setTimeout;
 var _cancelIdleCallback = () => typeof requestIdleCallback !== "undefined" ? cancelIdleCallback : clearTimeout;
-var _IdleScheduler = class _IdleScheduler {
+var IdleScheduler = class _IdleScheduler {
   constructor() {
     this.executingCallbacks = false;
     this.idleId = null;
@@ -16743,13 +16766,14 @@ var _IdleScheduler = class _IdleScheduler {
     this.current.clear();
     this.deferred.clear();
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _IdleScheduler,
+      providedIn: "root",
+      factory: () => new _IdleScheduler()
+    });
+  }
 };
-_IdleScheduler.ɵprov = ɵɵdefineInjectable({
-  token: _IdleScheduler,
-  providedIn: "root",
-  factory: () => new _IdleScheduler()
-});
-var IdleScheduler = _IdleScheduler;
 function onTimer(delay2) {
   return (callback, lView) => scheduleTimerTrigger(delay2, callback, lView);
 }
@@ -16760,7 +16784,7 @@ function scheduleTimerTrigger(delay2, callback, lView) {
   scheduler.add(delay2, callback);
   return cleanupFn;
 }
-var _TimerScheduler = class _TimerScheduler {
+var TimerScheduler = class _TimerScheduler {
   constructor() {
     this.executingCallbacks = false;
     this.timeoutId = null;
@@ -16875,13 +16899,14 @@ var _TimerScheduler = class _TimerScheduler {
     this.current.length = 0;
     this.deferred.length = 0;
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _TimerScheduler,
+      providedIn: "root",
+      factory: () => new _TimerScheduler()
+    });
+  }
 };
-_TimerScheduler.ɵprov = ɵɵdefineInjectable({
-  token: _TimerScheduler,
-  providedIn: "root",
-  factory: () => new _TimerScheduler()
-});
-var TimerScheduler = _TimerScheduler;
 var DEFER_BLOCK_DEPENDENCY_INTERCEPTOR = new InjectionToken("DEFER_BLOCK_DEPENDENCY_INTERCEPTOR");
 var DEFER_BLOCK_CONFIG = new InjectionToken(ngDevMode ? "DEFER_BLOCK_CONFIG" : "");
 function shouldTriggerDeferBlock(injector) {
@@ -20853,7 +20878,7 @@ function ɵɵProvidersFeature(providers, viewProviders = []) {
     };
   };
 }
-var _StandaloneService = class _StandaloneService {
+var StandaloneService = class _StandaloneService {
   constructor(_injector) {
     this._injector = _injector;
     this.cachedInjectors = /* @__PURE__ */ new Map();
@@ -20880,13 +20905,14 @@ var _StandaloneService = class _StandaloneService {
       this.cachedInjectors.clear();
     }
   }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _StandaloneService,
+      providedIn: "environment",
+      factory: () => new _StandaloneService(ɵɵinject(EnvironmentInjector))
+    });
+  }
 };
-_StandaloneService.ɵprov = ɵɵdefineInjectable({
-  token: _StandaloneService,
-  providedIn: "environment",
-  factory: () => new _StandaloneService(ɵɵinject(EnvironmentInjector))
-});
-var StandaloneService = _StandaloneService;
 function ɵɵStandaloneFeature(definition) {
   performanceMarkFeature("NgStandalone");
   definition.getStandaloneInjector = (parentInjector) => {
@@ -22260,7 +22286,7 @@ var Version = class {
   }
 };
 var VERSION = new Version("18.2.1");
-var _Console = class _Console {
+var Console = class _Console {
   log(message) {
     console.log(message);
   }
@@ -22268,16 +22294,19 @@ var _Console = class _Console {
   warn(message) {
     console.warn(message);
   }
+  static {
+    this.ɵfac = function Console_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _Console)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _Console,
+      factory: _Console.ɵfac,
+      providedIn: "platform"
+    });
+  }
 };
-_Console.ɵfac = function Console_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _Console)();
-};
-_Console.ɵprov = ɵɵdefineInjectable({
-  token: _Console,
-  factory: _Console.ɵfac,
-  providedIn: "platform"
-});
-var Console = _Console;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Console, [{
     type: Injectable,
@@ -22787,7 +22816,7 @@ function publishGlobalUtil(name, fn) {
 }
 var TESTABILITY = new InjectionToken("");
 var TESTABILITY_GETTER = new InjectionToken("");
-var _Testability = class _Testability {
+var Testability = class _Testability {
   constructor(_ngZone, registry, testabilityGetter) {
     this._ngZone = _ngZone;
     this.registry = registry;
@@ -22921,15 +22950,18 @@ var _Testability = class _Testability {
   findProviders(using2, provider, exactMatch) {
     return [];
   }
+  static {
+    this.ɵfac = function Testability_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _Testability)(ɵɵinject(NgZone), ɵɵinject(TestabilityRegistry), ɵɵinject(TESTABILITY_GETTER));
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _Testability,
+      factory: _Testability.ɵfac
+    });
+  }
 };
-_Testability.ɵfac = function Testability_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _Testability)(ɵɵinject(NgZone), ɵɵinject(TestabilityRegistry), ɵɵinject(TESTABILITY_GETTER));
-};
-_Testability.ɵprov = ɵɵdefineInjectable({
-  token: _Testability,
-  factory: _Testability.ɵfac
-});
-var Testability = _Testability;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Testability, [{
     type: Injectable
@@ -22945,7 +22977,7 @@ var Testability = _Testability;
     }]
   }], null);
 })();
-var _TestabilityRegistry = class _TestabilityRegistry {
+var TestabilityRegistry = class _TestabilityRegistry {
   constructor() {
     this._applications = /* @__PURE__ */ new Map();
   }
@@ -22998,16 +23030,19 @@ var _TestabilityRegistry = class _TestabilityRegistry {
   findTestabilityInTree(elem, findInAncestors = true) {
     return _testabilityGetter?.findTestabilityInTree(this, elem, findInAncestors) ?? null;
   }
+  static {
+    this.ɵfac = function TestabilityRegistry_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _TestabilityRegistry)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _TestabilityRegistry,
+      factory: _TestabilityRegistry.ɵfac,
+      providedIn: "platform"
+    });
+  }
 };
-_TestabilityRegistry.ɵfac = function TestabilityRegistry_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _TestabilityRegistry)();
-};
-_TestabilityRegistry.ɵprov = ɵɵdefineInjectable({
-  token: _TestabilityRegistry,
-  factory: _TestabilityRegistry.ɵfac,
-  providedIn: "platform"
-});
-var TestabilityRegistry = _TestabilityRegistry;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TestabilityRegistry, [{
     type: Injectable,
@@ -23027,7 +23062,7 @@ function isSubscribable(obj) {
   return !!obj && typeof obj.subscribe === "function";
 }
 var APP_INITIALIZER = new InjectionToken(ngDevMode ? "Application Initializer" : "");
-var _ApplicationInitStatus = class _ApplicationInitStatus {
+var ApplicationInitStatus = class _ApplicationInitStatus {
   constructor() {
     this.initialized = false;
     this.done = false;
@@ -23076,16 +23111,19 @@ var _ApplicationInitStatus = class _ApplicationInitStatus {
     }
     this.initialized = true;
   }
+  static {
+    this.ɵfac = function ApplicationInitStatus_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ApplicationInitStatus)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ApplicationInitStatus,
+      factory: _ApplicationInitStatus.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_ApplicationInitStatus.ɵfac = function ApplicationInitStatus_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ApplicationInitStatus)();
-};
-_ApplicationInitStatus.ɵprov = ɵɵdefineInjectable({
-  token: _ApplicationInitStatus,
-  factory: _ApplicationInitStatus.ɵfac,
-  providedIn: "root"
-});
-var ApplicationInitStatus = _ApplicationInitStatus;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationInitStatus, [{
     type: Injectable,
@@ -23134,7 +23172,7 @@ function optionsReducer(dst, objs) {
   }
   return __spreadValues(__spreadValues({}, dst), objs);
 }
-var _ApplicationRef = class _ApplicationRef {
+var ApplicationRef = class _ApplicationRef {
   constructor() {
     this._bootstrapListeners = [];
     this._runningTick = false;
@@ -23413,16 +23451,19 @@ var _ApplicationRef = class _ApplicationRef {
       console.warn(formatRuntimeError(406, "This instance of the `ApplicationRef` has already been destroyed."));
     }
   }
+  static {
+    this.ɵfac = function ApplicationRef_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ApplicationRef)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ApplicationRef,
+      factory: _ApplicationRef.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_ApplicationRef.ɵfac = function ApplicationRef_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ApplicationRef)();
-};
-_ApplicationRef.ɵprov = ɵɵdefineInjectable({
-  token: _ApplicationRef,
-  factory: _ApplicationRef.ɵfac,
-  providedIn: "root"
-});
-var ApplicationRef = _ApplicationRef;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationRef, [{
     type: Injectable,
@@ -23468,7 +23509,7 @@ var ModuleWithComponentFactories = class {
     this.componentFactories = componentFactories;
   }
 };
-var _Compiler = class _Compiler {
+var Compiler = class _Compiler {
   /**
    * Compiles the given NgModule and all of its components. All templates of the components
    * have to be inlined.
@@ -23517,16 +23558,19 @@ var _Compiler = class _Compiler {
   getModuleId(moduleType) {
     return void 0;
   }
+  static {
+    this.ɵfac = function Compiler_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _Compiler)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _Compiler,
+      factory: _Compiler.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_Compiler.ɵfac = function Compiler_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _Compiler)();
-};
-_Compiler.ɵprov = ɵɵdefineInjectable({
-  token: _Compiler,
-  factory: _Compiler.ɵfac,
-  providedIn: "root"
-});
-var Compiler = _Compiler;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Compiler, [{
     type: Injectable,
@@ -23575,7 +23619,7 @@ function _lastDefined(args) {
   }
   return void 0;
 }
-var _NgZoneChangeDetectionScheduler = class _NgZoneChangeDetectionScheduler {
+var NgZoneChangeDetectionScheduler = class _NgZoneChangeDetectionScheduler {
   constructor() {
     this.zone = inject(NgZone);
     this.changeDetectionScheduler = inject(ChangeDetectionScheduler);
@@ -23599,16 +23643,19 @@ var _NgZoneChangeDetectionScheduler = class _NgZoneChangeDetectionScheduler {
   ngOnDestroy() {
     this._onMicrotaskEmptySubscription?.unsubscribe();
   }
+  static {
+    this.ɵfac = function NgZoneChangeDetectionScheduler_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _NgZoneChangeDetectionScheduler)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _NgZoneChangeDetectionScheduler,
+      factory: _NgZoneChangeDetectionScheduler.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_NgZoneChangeDetectionScheduler.ɵfac = function NgZoneChangeDetectionScheduler_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _NgZoneChangeDetectionScheduler)();
-};
-_NgZoneChangeDetectionScheduler.ɵprov = ɵɵdefineInjectable({
-  token: _NgZoneChangeDetectionScheduler,
-  factory: _NgZoneChangeDetectionScheduler.ɵfac,
-  providedIn: "root"
-});
-var NgZoneChangeDetectionScheduler = _NgZoneChangeDetectionScheduler;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NgZoneChangeDetectionScheduler, [{
     type: Injectable,
@@ -23698,7 +23745,7 @@ function getNgZoneOptions(options) {
     shouldCoalesceRunChangeDetection: options?.runCoalescing ?? false
   };
 }
-var _ZoneStablePendingTask = class _ZoneStablePendingTask {
+var ZoneStablePendingTask = class _ZoneStablePendingTask {
   constructor() {
     this.subscription = new Subscription();
     this.initialized = false;
@@ -23733,16 +23780,19 @@ var _ZoneStablePendingTask = class _ZoneStablePendingTask {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+  static {
+    this.ɵfac = function ZoneStablePendingTask_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ZoneStablePendingTask)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ZoneStablePendingTask,
+      factory: _ZoneStablePendingTask.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_ZoneStablePendingTask.ɵfac = function ZoneStablePendingTask_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ZoneStablePendingTask)();
-};
-_ZoneStablePendingTask.ɵprov = ɵɵdefineInjectable({
-  token: _ZoneStablePendingTask,
-  factory: _ZoneStablePendingTask.ɵfac,
-  providedIn: "root"
-});
-var ZoneStablePendingTask = _ZoneStablePendingTask;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ZoneStablePendingTask, [{
     type: Injectable,
@@ -23766,7 +23816,7 @@ function trackMicrotaskNotificationForDebugging() {
     throw new RuntimeError(103, "Angular could not stabilize because there were endless change notifications within the browser event loop. The stack from the last several notifications: \n" + stackFromLastFewNotifications.join("\n"));
   }
 }
-var _ChangeDetectionSchedulerImpl = class _ChangeDetectionSchedulerImpl {
+var ChangeDetectionSchedulerImpl = class _ChangeDetectionSchedulerImpl {
   constructor() {
     this.appRef = inject(ApplicationRef);
     this.taskService = inject(PendingTasks);
@@ -23903,16 +23953,19 @@ var _ChangeDetectionSchedulerImpl = class _ChangeDetectionSchedulerImpl {
       this.taskService.remove(taskId);
     }
   }
+  static {
+    this.ɵfac = function ChangeDetectionSchedulerImpl_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ChangeDetectionSchedulerImpl)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ChangeDetectionSchedulerImpl,
+      factory: _ChangeDetectionSchedulerImpl.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_ChangeDetectionSchedulerImpl.ɵfac = function ChangeDetectionSchedulerImpl_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ChangeDetectionSchedulerImpl)();
-};
-_ChangeDetectionSchedulerImpl.ɵprov = ɵɵdefineInjectable({
-  token: _ChangeDetectionSchedulerImpl,
-  factory: _ChangeDetectionSchedulerImpl.ɵfac,
-  providedIn: "root"
-});
-var ChangeDetectionSchedulerImpl = _ChangeDetectionSchedulerImpl;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ChangeDetectionSchedulerImpl, [{
     type: Injectable,
@@ -23969,7 +24022,7 @@ var MissingTranslationStrategy;
 })(MissingTranslationStrategy || (MissingTranslationStrategy = {}));
 var SCAN_DELAY = 200;
 var OVERSIZED_IMAGE_TOLERANCE = 1200;
-var _ImagePerformanceWarning = class _ImagePerformanceWarning {
+var ImagePerformanceWarning = class _ImagePerformanceWarning {
   constructor() {
     this.window = null;
     this.observer = null;
@@ -24077,16 +24130,19 @@ var _ImagePerformanceWarning = class _ImagePerformanceWarning {
     const oversizedHeight = intrinsicHeight - recommendedHeight >= OVERSIZED_IMAGE_TOLERANCE;
     return oversizedWidth || oversizedHeight;
   }
+  static {
+    this.ɵfac = function ImagePerformanceWarning_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ImagePerformanceWarning)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _ImagePerformanceWarning,
+      factory: _ImagePerformanceWarning.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_ImagePerformanceWarning.ɵfac = function ImagePerformanceWarning_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ImagePerformanceWarning)();
-};
-_ImagePerformanceWarning.ɵprov = ɵɵdefineInjectable({
-  token: _ImagePerformanceWarning,
-  factory: _ImagePerformanceWarning.ɵfac,
-  providedIn: "root"
-});
-var ImagePerformanceWarning = _ImagePerformanceWarning;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ImagePerformanceWarning, [{
     type: Injectable,
@@ -24181,7 +24237,7 @@ function moduleDoBootstrap(moduleRef, allPlatformModules) {
   }
   allPlatformModules.push(moduleRef);
 }
-var _PlatformRef = class _PlatformRef {
+var PlatformRef = class _PlatformRef {
   /** @internal */
   constructor(_injector) {
     this._injector = _injector;
@@ -24273,16 +24329,19 @@ var _PlatformRef = class _PlatformRef {
   get destroyed() {
     return this._destroyed;
   }
+  static {
+    this.ɵfac = function PlatformRef_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _PlatformRef)(ɵɵinject(Injector));
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _PlatformRef,
+      factory: _PlatformRef.ɵfac,
+      providedIn: "platform"
+    });
+  }
 };
-_PlatformRef.ɵfac = function PlatformRef_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _PlatformRef)(ɵɵinject(Injector));
-};
-_PlatformRef.ɵprov = ɵɵdefineInjectable({
-  token: _PlatformRef,
-  factory: _PlatformRef.ɵfac,
-  providedIn: "platform"
-});
-var PlatformRef = _PlatformRef;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PlatformRef, [{
     type: Injectable,
@@ -24486,10 +24545,11 @@ function getNgModuleById(id) {
 function noModuleError(id) {
   return new Error(`No module with ID ${id} loaded`);
 }
-var _ChangeDetectorRef = class _ChangeDetectorRef {
+var ChangeDetectorRef = class {
+  static {
+    this.__NG_ELEMENT_ID__ = injectChangeDetectorRef;
+  }
 };
-_ChangeDetectorRef.__NG_ELEMENT_ID__ = injectChangeDetectorRef;
-var ChangeDetectorRef = _ChangeDetectorRef;
 function injectChangeDetectorRef(flags) {
   return createViewRef(
     getCurrentTNode(),
@@ -25688,7 +25748,14 @@ var KeyValueChangeRecord_ = class {
 function defaultIterableDiffersFactory() {
   return new IterableDiffers([new DefaultIterableDifferFactory()]);
 }
-var _IterableDiffers = class _IterableDiffers {
+var IterableDiffers = class _IterableDiffers {
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _IterableDiffers,
+      providedIn: "root",
+      factory: defaultIterableDiffersFactory
+    });
+  }
   constructor(factories) {
     this.factories = factories;
   }
@@ -25738,19 +25805,20 @@ var _IterableDiffers = class _IterableDiffers {
     }
   }
 };
-_IterableDiffers.ɵprov = ɵɵdefineInjectable({
-  token: _IterableDiffers,
-  providedIn: "root",
-  factory: defaultIterableDiffersFactory
-});
-var IterableDiffers = _IterableDiffers;
 function getTypeNameForDebugging(type) {
   return type["name"] || typeof type;
 }
 function defaultKeyValueDiffersFactory() {
   return new KeyValueDiffers([new DefaultKeyValueDifferFactory()]);
 }
-var _KeyValueDiffers = class _KeyValueDiffers {
+var KeyValueDiffers = class _KeyValueDiffers {
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _KeyValueDiffers,
+      providedIn: "root",
+      factory: defaultKeyValueDiffersFactory
+    });
+  }
   constructor(factories) {
     this.factories = factories;
   }
@@ -25799,30 +25867,29 @@ var _KeyValueDiffers = class _KeyValueDiffers {
     throw new RuntimeError(901, ngDevMode && `Cannot find a differ supporting object '${kv}'`);
   }
 };
-_KeyValueDiffers.ɵprov = ɵɵdefineInjectable({
-  token: _KeyValueDiffers,
-  providedIn: "root",
-  factory: defaultKeyValueDiffersFactory
-});
-var KeyValueDiffers = _KeyValueDiffers;
 var keyValDiff = [new DefaultKeyValueDifferFactory()];
 var iterableDiff = [new DefaultIterableDifferFactory()];
 var defaultIterableDiffers = new IterableDiffers(iterableDiff);
 var defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
 var platformCore = createPlatformFactory(null, "core", []);
-var _ApplicationModule = class _ApplicationModule {
+var ApplicationModule = class _ApplicationModule {
   // Inject ApplicationRef to make it eager...
   constructor(appRef) {
   }
+  static {
+    this.ɵfac = function ApplicationModule_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _ApplicationModule)(ɵɵinject(ApplicationRef));
+    };
+  }
+  static {
+    this.ɵmod = ɵɵdefineNgModule({
+      type: _ApplicationModule
+    });
+  }
+  static {
+    this.ɵinj = ɵɵdefineInjector({});
+  }
 };
-_ApplicationModule.ɵfac = function ApplicationModule_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _ApplicationModule)(ɵɵinject(ApplicationRef));
-};
-_ApplicationModule.ɵmod = ɵɵdefineNgModule({
-  type: _ApplicationModule
-});
-_ApplicationModule.ɵinj = ɵɵdefineInjector({});
-var ApplicationModule = _ApplicationModule;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationModule, [{
     type: NgModule
@@ -26070,7 +26137,7 @@ var JSACTION_EVENT_CONTRACT = new InjectionToken(ngDevMode ? "EVENT_CONTRACT_DET
   factory: () => ({})
 });
 var GLOBAL_EVENT_DELEGATION = new InjectionToken(ngDevMode ? "GLOBAL_EVENT_DELEGATION" : "");
-var _GlobalEventDelegation = class _GlobalEventDelegation {
+var GlobalEventDelegation = class _GlobalEventDelegation {
   constructor() {
     this.eventContractDetails = inject(JSACTION_EVENT_CONTRACT);
   }
@@ -26097,15 +26164,18 @@ var _GlobalEventDelegation = class _GlobalEventDelegation {
       element.removeEventListener(eventType, callback);
     }
   }
+  static {
+    this.ɵfac = function GlobalEventDelegation_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _GlobalEventDelegation)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _GlobalEventDelegation,
+      factory: _GlobalEventDelegation.ɵfac
+    });
+  }
 };
-_GlobalEventDelegation.ɵfac = function GlobalEventDelegation_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _GlobalEventDelegation)();
-};
-_GlobalEventDelegation.ɵprov = ɵɵdefineInjectable({
-  token: _GlobalEventDelegation,
-  factory: _GlobalEventDelegation.ɵfac
-});
-var GlobalEventDelegation = _GlobalEventDelegation;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(GlobalEventDelegation, [{
     type: Injectable
@@ -26797,14 +26867,15 @@ var APP_EFFECT_SCHEDULER = new InjectionToken("", {
   providedIn: "root",
   factory: () => inject(EffectScheduler)
 });
-var _EffectScheduler = class _EffectScheduler {
+var EffectScheduler = class _EffectScheduler {
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _EffectScheduler,
+      providedIn: "root",
+      factory: () => new ZoneAwareEffectScheduler()
+    });
+  }
 };
-_EffectScheduler.ɵprov = ɵɵdefineInjectable({
-  token: _EffectScheduler,
-  providedIn: "root",
-  factory: () => new ZoneAwareEffectScheduler()
-});
-var EffectScheduler = _EffectScheduler;
 var ZoneAwareEffectScheduler = class {
   constructor() {
     this.queuedEffectCount = 0;
@@ -27512,4 +27583,4 @@ export {
    * found in the LICENSE file at https://angular.io/license
    *)
 */
-//# sourceMappingURL=chunk-Q2FNYFEN.js.map
+//# sourceMappingURL=chunk-G2RZ4S5T.js.map

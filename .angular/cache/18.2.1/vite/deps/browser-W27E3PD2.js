@@ -1,6 +1,6 @@
 import {
   DOCUMENT
-} from "./chunk-YVNIXLEF.js";
+} from "./chunk-MWYB44CY.js";
 import {
   ANIMATION_MODULE_TYPE,
   Inject,
@@ -14,7 +14,7 @@ import {
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-Q2FNYFEN.js";
+} from "./chunk-G2RZ4S5T.js";
 
 // node_modules/@angular/animations/fesm2022/animations.mjs
 var AnimationMetadataType;
@@ -48,17 +48,20 @@ function style(tokens) {
     offset: null
   };
 }
-var _AnimationBuilder = class _AnimationBuilder {
+var AnimationBuilder = class _AnimationBuilder {
+  static {
+    this.ɵfac = function AnimationBuilder_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _AnimationBuilder)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _AnimationBuilder,
+      factory: () => (() => inject(BrowserAnimationBuilder))(),
+      providedIn: "root"
+    });
+  }
 };
-_AnimationBuilder.ɵfac = function AnimationBuilder_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _AnimationBuilder)();
-};
-_AnimationBuilder.ɵprov = ɵɵdefineInjectable({
-  token: _AnimationBuilder,
-  factory: () => (() => inject(BrowserAnimationBuilder))(),
-  providedIn: "root"
-});
-var AnimationBuilder = _AnimationBuilder;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnimationBuilder, [{
     type: Injectable,
@@ -70,7 +73,7 @@ var AnimationBuilder = _AnimationBuilder;
 })();
 var AnimationFactory = class {
 };
-var _BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationBuilder {
+var BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationBuilder {
   constructor(rootRenderer, doc) {
     super();
     this.animationModuleType = inject(ANIMATION_MODULE_TYPE, {
@@ -97,16 +100,19 @@ var _BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationB
     issueAnimationCommand(this._renderer, null, id, "register", [entry]);
     return new BrowserAnimationFactory(id, this._renderer);
   }
+  static {
+    this.ɵfac = function BrowserAnimationBuilder_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _BrowserAnimationBuilder)(ɵɵinject(RendererFactory2), ɵɵinject(DOCUMENT));
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _BrowserAnimationBuilder,
+      factory: _BrowserAnimationBuilder.ɵfac,
+      providedIn: "root"
+    });
+  }
 };
-_BrowserAnimationBuilder.ɵfac = function BrowserAnimationBuilder_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _BrowserAnimationBuilder)(ɵɵinject(RendererFactory2), ɵɵinject(DOCUMENT));
-};
-_BrowserAnimationBuilder.ɵprov = ɵɵdefineInjectable({
-  token: _BrowserAnimationBuilder,
-  factory: _BrowserAnimationBuilder.ɵfac,
-  providedIn: "root"
-});
-var BrowserAnimationBuilder = _BrowserAnimationBuilder;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(BrowserAnimationBuilder, [{
     type: Injectable,
@@ -687,7 +693,7 @@ function invokeQuery(element, selector, multi) {
   const elem = element.querySelector(selector);
   return elem ? [elem] : [];
 }
-var _NoopAnimationDriver = class _NoopAnimationDriver {
+var NoopAnimationDriver = class _NoopAnimationDriver {
   /**
    * @returns Whether `prop` is a valid CSS property
    */
@@ -726,24 +732,28 @@ var _NoopAnimationDriver = class _NoopAnimationDriver {
   animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
     return new NoopAnimationPlayer(duration, delay);
   }
+  static {
+    this.ɵfac = function NoopAnimationDriver_Factory(__ngFactoryType__) {
+      return new (__ngFactoryType__ || _NoopAnimationDriver)();
+    };
+  }
+  static {
+    this.ɵprov = ɵɵdefineInjectable({
+      token: _NoopAnimationDriver,
+      factory: _NoopAnimationDriver.ɵfac
+    });
+  }
 };
-_NoopAnimationDriver.ɵfac = function NoopAnimationDriver_Factory(__ngFactoryType__) {
-  return new (__ngFactoryType__ || _NoopAnimationDriver)();
-};
-_NoopAnimationDriver.ɵprov = ɵɵdefineInjectable({
-  token: _NoopAnimationDriver,
-  factory: _NoopAnimationDriver.ɵfac
-});
-var NoopAnimationDriver = _NoopAnimationDriver;
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NoopAnimationDriver, [{
     type: Injectable
   }], null, null);
 })();
-var _AnimationDriver = class _AnimationDriver {
+var AnimationDriver = class {
+  static {
+    this.NOOP = new NoopAnimationDriver();
+  }
 };
-_AnimationDriver.NOOP = new NoopAnimationDriver();
-var AnimationDriver = _AnimationDriver;
 var AnimationStyleNormalizer = class {
 };
 var NoopAnimationStyleNormalizer = class {
@@ -3859,7 +3869,10 @@ function packageNonAnimatableStyles(element, styles) {
   }
   return startStyles || endStyles ? new SpecialCasedStyles(element, startStyles, endStyles) : null;
 }
-var _SpecialCasedStyles = class _SpecialCasedStyles {
+var SpecialCasedStyles = class _SpecialCasedStyles {
+  static {
+    this.initialStylesByElement = /* @__PURE__ */ new WeakMap();
+  }
   constructor(_element, _startStyles, _endStyles) {
     this._element = _element;
     this._startStyles = _startStyles;
@@ -3907,8 +3920,6 @@ var _SpecialCasedStyles = class _SpecialCasedStyles {
     }
   }
 };
-_SpecialCasedStyles.initialStylesByElement = /* @__PURE__ */ new WeakMap();
-var SpecialCasedStyles = _SpecialCasedStyles;
 function filterNonAnimatableStyles(styles) {
   let result = null;
   styles.forEach((val, prop) => {
@@ -4435,4 +4446,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=browser-YP3XA5FO.js.map
+//# sourceMappingURL=browser-W27E3PD2.js.map
