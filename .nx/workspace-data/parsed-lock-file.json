@@ -6583,9 +6583,9 @@
       "type": "npm",
       "name": "npm:caniuse-lite",
       "data": {
-        "version": "1.0.30001651",
+        "version": "1.0.30001699",
         "packageName": "caniuse-lite",
-        "hash": "sha512-9Cf+Xv1jJNe1xPZLGuUXLNkE1BoDkqRqYyFJ9TDYSqhduqA4hu4oR9HluGoWYQC/aj8WHjsGVV+bwkh0+tegRg=="
+        "hash": "sha512-b+uH5BakXZ9Do9iK+CkDmctUSEqZl+SP056vc5usa0PL+ev5OHw003rZXcnjNDv3L8P5j6rwT6C0BPKSikW08w=="
       }
     },
     "npm:chai": {

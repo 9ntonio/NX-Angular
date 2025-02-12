@@ -1,6 +1,7 @@
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   DOCUMENT
-} from "./chunk-BSY337QY.js";
+} from "./chunk-ADPK4N2K.js";
 import {
   ANIMATION_MODULE_TYPE,
   Inject,
@@ -8,13 +9,15 @@ import {
   RendererFactory2,
   RuntimeError,
   ViewEncapsulation$1,
-  __objRest,
-  __spreadValues,
   inject,
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-Q2FNYFEN.js";
+} from "./chunk-OWLUMR7K.js";
+import {
+  __objRest,
+  __spreadValues
+} from "./chunk-NQ4HTGF6.js";
 
 // node_modules/@angular/animations/fesm2022/animations.mjs
 var AnimationMetadataType;
@@ -4396,28 +4399,29 @@ var AnimationRendererFactory = class {
     return this.engine.whenRenderingDone();
   }
 };
+
 export {
-  AnimationDriver,
+  getParentElement,
+  validateStyleProperty,
+  validateWebAnimatableStyleProperty,
+  containsElement,
+  invokeQuery,
   NoopAnimationDriver,
-  Animation as ɵAnimation,
-  AnimationEngine as ɵAnimationEngine,
-  AnimationRenderer as ɵAnimationRenderer,
-  AnimationRendererFactory as ɵAnimationRendererFactory,
-  AnimationStyleNormalizer as ɵAnimationStyleNormalizer,
-  BaseAnimationRenderer as ɵBaseAnimationRenderer,
-  NoopAnimationStyleNormalizer as ɵNoopAnimationStyleNormalizer,
-  WebAnimationsDriver as ɵWebAnimationsDriver,
-  WebAnimationsPlayer as ɵWebAnimationsPlayer,
-  WebAnimationsStyleNormalizer as ɵWebAnimationsStyleNormalizer,
-  allowPreviousPlayerStylesMerge as ɵallowPreviousPlayerStylesMerge,
-  camelCaseToDashCase as ɵcamelCaseToDashCase,
-  containsElement as ɵcontainsElement,
-  createEngine as ɵcreateEngine,
-  getParentElement as ɵgetParentElement,
-  invokeQuery as ɵinvokeQuery,
-  normalizeKeyframes as ɵnormalizeKeyframes,
-  validateStyleProperty as ɵvalidateStyleProperty,
-  validateWebAnimatableStyleProperty as ɵvalidateWebAnimatableStyleProperty
+  AnimationDriver,
+  AnimationStyleNormalizer,
+  NoopAnimationStyleNormalizer,
+  normalizeKeyframes,
+  camelCaseToDashCase,
+  allowPreviousPlayerStylesMerge,
+  WebAnimationsStyleNormalizer,
+  AnimationEngine,
+  WebAnimationsPlayer,
+  WebAnimationsDriver,
+  createEngine,
+  Animation,
+  BaseAnimationRenderer,
+  AnimationRenderer,
+  AnimationRendererFactory
 };
 /*! Bundled license information:
 
@@ -4435,4 +4439,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=browser-U5LPXID3.js.map
+//# sourceMappingURL=chunk-ZN6WDWWD.js.map

@@ -5,11 +5,11 @@ import {
   DomRendererFactory2,
   EVENT_MANAGER_PLUGINS,
   EventManagerPlugin
-} from "./chunk-XVH2IY2F.js";
+} from "./chunk-32ZH2GDL.js";
 import {
   HTTP_ROOT_INTERCEPTOR_FNS,
   HttpClientModule
-} from "./chunk-HIJBHCXH.js";
+} from "./chunk-JSJJBCXC.js";
 import {
   AnimationDriver,
   AnimationEngine,
@@ -18,7 +18,7 @@ import {
   NoopAnimationDriver,
   WebAnimationsDriver,
   WebAnimationsStyleNormalizer
-} from "./chunk-54ECHDSE.js";
+} from "./chunk-ZN6WDWWD.js";
 import {
   DOCUMENT,
   NullViewportScroller,
@@ -28,7 +28,7 @@ import {
   XhrFactory,
   getDOM,
   setRootDomAdapter
-} from "./chunk-R7X3KYRT.js";
+} from "./chunk-ADPK4N2K.js";
 import {
   ALLOW_MULTIPLE_PLATFORMS,
   ANIMATION_MODULE_TYPE,
