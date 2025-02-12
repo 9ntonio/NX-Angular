@@ -2,30 +2,30 @@
 
 ## Goal
 
-The goal of this assignment is to showcase your skills and coding style while building an enterprise grade Angular application. You may take your time with this assessment to show case your skills. Once you have it working you can add some extra flare with unit testing, e2e testing with playwright, updated styles to make it snazzy, or whatever else you feel like. 
+The goal of this assignment is to showcase your skills and coding style while building an enterprise grade Angular application. You may take your time with this assessment to show case your skills. Once you have it working you can add some extra flare with unit testing, e2e testing with playwright, updated styles to make it snazzy, or whatever else you feel like.
 
-> [!TIP] 
+> [!TIP]
 > **State Management** - We have included all of the `@ngrx` packages but you're welcome to use any state management library you see fit or just stateful services.
-> 
+>
 > **Component Library** - We have included [@angular/material](https://material.angular.io/components/categories) but you're welcome to use any component library that suites your needs. Ex: [PrimeNG](https://primeng.org/installation)
 
 ## Getting Started
 
-> [!CAUTION]
-> **DO NOT FORK THIS REPO** - Instead click the [Download Zip](https://github.com/crexi-dev/angular/archive/refs/heads/main.zip).
+> [!CAUTION] > **DO NOT FORK THIS REPO** - Instead click the [Download Zip](https://github.com/crexi-dev/angular/archive/refs/heads/main.zip).
 
-- Install packages with `npm i`
-- Serve the application using `npx nx run angular-task:serve`
-- You're off to the races coding! Good luck!
+-   Install packages with `npm i`
+-   Serve the application using `npx nx run angular-task:serve`
+-   You're off to the races coding! Good luck!
 
 ## Useful NX tips and tricks
-> [!TIP]
-> **NX Generators** - you're more than welcome to modify the [NX Generators](https://nx.dev/reference/nx-json#generators) section inside of the `nx.json` file with any changes you prefer for your setup.
-- [@nx/angular:component Documentation](https://nx.dev/nx-api/angular/generators/component) Create an angular component using `npx nx g @nx/angular:component`
-- Create an angular service using `npx nx g @nx/angular:service`
-- [@nx/angular:pipe Documentation](https://nx.dev/nx-api/angular/generators/pipe) Create an angular pipe using `npx nx g @nx/angular:pipe`
-- [@nx/angular:directive Documentation](https://nx.dev/nx-api/angular/generators/directive) Create an angular directive using `npx nx g @nx/angular:directive`
-- [@nx/angular:library Documentation](https://nx.dev/nx-api/angular/generators/library) Create an angular library using `npx nx g @nx/angular:library`
+
+> [!TIP] > **NX Generators** - you're more than welcome to modify the [NX Generators](https://nx.dev/reference/nx-json#generators) section inside of the `nx.json` file with any changes you prefer for your setup.
+
+-   [@nx/angular:component Documentation](https://nx.dev/nx-api/angular/generators/component) Create an angular component using `npx nx g @nx/angular:component <componet-name> --directory=apps/angular-task/src/app`
+-   Create an angular service using `npx nx g @nx/angular:service`
+-   [@nx/angular:pipe Documentation](https://nx.dev/nx-api/angular/generators/pipe) Create an angular pipe using `npx nx g @nx/angular:pipe`
+-   [@nx/angular:directive Documentation](https://nx.dev/nx-api/angular/generators/directive) Create an angular directive using `npx nx g @nx/angular:directive`
+-   [@nx/angular:library Documentation](https://nx.dev/nx-api/angular/generators/library) Create an angular library using `npx nx g @nx/angular:library`
 
 ## User Management Application
 
