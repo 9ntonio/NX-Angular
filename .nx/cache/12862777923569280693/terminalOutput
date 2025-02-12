@@ -36,15 +36,17 @@
 [2K[1A[2K[G[33m⠼[39m Building...
 [2K[1A[2K[G[33m⠴[39m Building...
 [2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[33m⠇[39m Building...
 [2K[1A[2K[G[32m✔[39m Building...
 [2K[1A[2K[G[?25h[37m[35mBrowser bundles[39m[37m        [39m
 [37m[1mInitial chunk files[22m    [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
 [37m[32mchunk-AOZ3BJF7.js[39m[37m      [2m | [22m[2m-[22m                  [2m | [22m[36m116.81 kB[39m[37m[2m | [22m               [36m34.21 kB[39m[37m[39m
 [37m[32mmain-H3XLVY6K.js[39m[37m       [2m | [22m[2mmain[22m               [2m | [22m[36m109.35 kB[39m[37m[2m | [22m               [36m27.69 kB[39m[37m[39m
-[37m[32mstyles-UUXD3MEU.css[39m[37m    [2m | [22m[2mstyles[22m             [2m | [22m [36m77.34 kB[39m[37m[2m | [22m                [36m8.62 kB[39m[37m[39m
 [37m[32mpolyfills-FFHMD2TL.js[39m[37m  [2m | [22m[2mpolyfills[22m          [2m | [22m [36m34.52 kB[39m[37m[2m | [22m               [36m11.28 kB[39m[37m[39m
+[37m[32mstyles-FDFM6RBY.css[39m[37m    [2m | [22m[2mstyles[22m             [2m | [22m  [36m6.52 kB[39m[37m[2m | [22m                [36m1.62 kB[39m[37m[39m
 [37m[39m
-[37m[1m [22m                      [2m | [22m[1mInitial total[22m      [2m | [22m[1m338.02 kB[22m[2m | [22m               [1m81.80 kB[22m[39m
+[37m[1m [22m                      [2m | [22m[1mInitial total[22m      [2m | [22m[1m267.21 kB[22m[2m | [22m               [1m74.80 kB[22m[39m
 [37m[39m
 [37m[1mLazy chunk files[22m       [2m | [22m[1mNames[22m              [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
 [37m[32mchunk-XQOAUJ2B.js[39m[37m      [2m | [22m[2mbrowser[22m            [2m | [22m [36m67.20 kB[39m[37m[2m | [22m               [36m17.47 kB[39m[37m[39m
@@ -72,7 +74,7 @@
 [37m[32mchunk-AL3HURTQ.mjs[39m[37m     [2m | [22m[2musers-component[22m    [2m | [22m[36m430 bytes[39m[37m[2m | [22m                       [39m
 [37m[32mchunk-Z6QGISD7.mjs[39m[37m     [2m | [22m[2mhome-component[22m     [2m | [22m[36m427 bytes[39m[37m[2m | [22m                       [39m
 [37m[39m
-[37mApplication bundle generation complete. [3.925 seconds][39m
+[37mApplication bundle generation complete. [4.181 seconds][39m
 [37m[39m
 [37mOutput location: /Users/9ntonio/Work/crexi/dist/apps/angular-task[39m
 [37m[39m

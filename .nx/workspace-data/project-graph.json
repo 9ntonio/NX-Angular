@@ -249,7 +249,6 @@
                 }
               ],
               "styles": [
-                "@angular/material/prebuilt-themes/azure-blue.css",
                 "apps/angular-task/src/styles.scss"
               ],
               "scripts": [],
@@ -11012,6 +11011,15 @@
         "version": "3.1.1",
         "packageName": "loupe",
         "hash": "sha512-edNu/8D5MKVfGVFRhFf8aAxiTM6Wumfz5XsaatSxlD3w4R1d/WEKUTydCdPGbl9K7QG/Ca3GnDV2sIKIpXRQcw=="
+      }
+    },
+    "npm:lucide-angular": {
+      "type": "npm",
+      "name": "npm:lucide-angular",
+      "data": {
+        "version": "0.475.0",
+        "packageName": "lucide-angular",
+        "hash": "sha512-wF2oRJEUEQZdjGmLfyCYMB81460NSG4wwFoNBJYTiLUXVlIo66oJn5yCLH43Emg7s8g4UicBfJ7J2YD0oe2qMg=="
       }
     },
     "npm:luxon": {
@@ -28827,6 +28835,23 @@
       {
         "source": "npm:lru-cache",
         "target": "npm:yallist",
+        "type": "static"
+      }
+    ],
+    "npm:lucide-angular": [
+      {
+        "source": "npm:lucide-angular",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "npm:lucide-angular",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "npm:lucide-angular",
+        "target": "npm:tslib",
         "type": "static"
       }
     ],
