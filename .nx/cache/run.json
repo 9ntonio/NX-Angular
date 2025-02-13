@@ -1,9 +1,21 @@
 {
   "run": {
-    "command": "nx run-many --target=serve --projects=angular-task --dry-run",
-    "startTime": "2025-02-12T22:53:14.917Z",
-    "endTime": "2025-02-12T22:53:14.922Z",
+    "command": "nx build public-library",
+    "startTime": "2025-02-13T01:32:09.602Z",
+    "endTime": "2025-02-13T01:32:11.232Z",
     "inner": false
   },
-  "tasks": []
+  "tasks": [
+    {
+      "taskId": "public-library:build:production",
+      "target": "build",
+      "projectName": "public-library",
+      "hash": "513968272794630778",
+      "startTime": "2025-02-13T01:32:09.608Z",
+      "endTime": "2025-02-13T01:32:11.232Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
 }

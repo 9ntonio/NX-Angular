@@ -183,6 +183,102 @@
         "tags": []
       }
     },
+    "public-library": {
+      "name": "public-library",
+      "type": "lib",
+      "data": {
+        "root": "apps/public-library",
+        "targets": {
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {},
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore",
+              "{workspaceRoot}/eslint.config.js"
+            ]
+          },
+          "nx-release-publish": {
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "executor": "@nx/js:release-publish",
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "@nx/angular:ng-packagr-lite",
+            "outputs": [
+              "{workspaceRoot}/dist/apps/public-library"
+            ],
+            "options": {
+              "project": "apps/public-library/ng-package.json",
+              "tsConfig": "apps/public-library/tsconfig.lib.json"
+            },
+            "configurations": {
+              "production": {
+                "tsConfig": "apps/public-library/tsconfig.lib.prod.json"
+              },
+              "development": {
+                "tsConfig": "apps/public-library/tsconfig.lib.json"
+              }
+            },
+            "defaultConfiguration": "production",
+            "parallelism": true,
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ]
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/public-library/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {
+              "ci": {
+                "ci": true,
+                "codeCoverage": true
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ]
+          }
+        },
+        "sourceRoot": "apps/public-library/src",
+        "name": "public-library",
+        "tags": [
+          "npm:public",
+          "ui",
+          "type:lib"
+        ],
+        "metadata": {
+          "targetGroups": {}
+        },
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "prefix": "lib",
+        "projectType": "library",
+        "implicitDependencies": []
+      }
+    },
     "angular-task": {
       "name": "angular-task",
       "type": "app",
@@ -340,6 +436,58 @@
         "projectType": "application",
         "prefix": "crx",
         "sourceRoot": "apps/angular-task/src",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    },
+    "public-shared-library": {
+      "name": "public-shared-library",
+      "type": "lib",
+      "data": {
+        "root": "apps",
+        "targets": {
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {},
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore",
+              "{workspaceRoot}/eslint.config.js"
+            ]
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {
+              "ci": {
+                "ci": true,
+                "codeCoverage": true
+              }
+            },
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ]
+          }
+        },
+        "name": "public-shared-library",
+        "$schema": "../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "apps/src",
+        "prefix": "lib",
+        "projectType": "library",
         "tags": [],
         "implicitDependencies": []
       }
@@ -14473,17 +14621,24 @@
         "type": "static"
       }
     ],
+    "public-library": [
+      {
+        "source": "public-library",
+        "target": "npm:@angular/core",
+        "type": "static"
+      },
+      {
+        "source": "public-library",
+        "target": "npm:@angular/common",
+        "type": "static"
+      },
+      {
+        "source": "public-library",
+        "target": "npm:jest-preset-angular",
+        "type": "static"
+      }
+    ],
     "angular-task": [
-      {
-        "source": "angular-task",
-        "target": "npm:@nx/angular",
-        "type": "static"
-      },
-      {
-        "source": "angular-task",
-        "target": "npm:tailwindcss-animate",
-        "type": "static"
-      },
       {
         "source": "angular-task",
         "target": "npm:@angular/common",
@@ -14521,10 +14676,16 @@
       },
       {
         "source": "angular-task",
+        "target": "public-library",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
         "target": "npm:jest-preset-angular",
         "type": "static"
       }
     ],
+    "public-shared-library": [],
     "npm:@ampproject/remapping": [
       {
         "source": "npm:@ampproject/remapping",

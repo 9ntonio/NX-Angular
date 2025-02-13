@@ -1,0 +1,415 @@
+{
+  "graph": {
+    "nodes": {
+      "angular-task-e2e": {
+        "name": "angular-task-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/angular-task-e2e",
+          "metadata": {
+            "targetGroups": {
+              "E2E (CI)": [
+                "e2e-ci--src/example.spec.ts",
+                "e2e-ci"
+              ]
+            }
+          },
+          "targets": {
+            "e2e": {
+              "options": {
+                "cwd": "apps/angular-task-e2e",
+                "command": "playwright test"
+              },
+              "parallelism": false,
+              "metadata": {
+                "technologies": [
+                  "playwright"
+                ],
+                "description": "Runs Playwright Tests",
+                "help": {
+                  "command": "npx playwright test --help",
+                  "example": {
+                    "options": {
+                      "workers": 1
+                    }
+                  }
+                }
+              },
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                {
+                  "externalDependencies": [
+                    "@playwright/test"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/playwright-report",
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/test-output"
+              ],
+              "executor": "nx:run-commands",
+              "configurations": {}
+            },
+            "e2e-ci--src/example.spec.ts": {
+              "options": {
+                "cwd": "apps/angular-task-e2e",
+                "command": "playwright test src/example.spec.ts"
+              },
+              "parallelism": true,
+              "metadata": {
+                "technologies": [
+                  "playwright"
+                ],
+                "description": "Runs Playwright Tests in src/example.spec.ts in CI",
+                "help": {
+                  "command": "npx playwright test --help",
+                  "example": {
+                    "options": {
+                      "workers": 1
+                    }
+                  }
+                }
+              },
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                {
+                  "externalDependencies": [
+                    "@playwright/test"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/playwright-report",
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/test-output"
+              ],
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "dependsOn": [
+                "^build"
+              ]
+            },
+            "e2e-ci": {
+              "executor": "nx:noop",
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                {
+                  "externalDependencies": [
+                    "@playwright/test"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/playwright-report",
+                "{workspaceRoot}/dist/.playwright/apps/angular-task-e2e/test-output"
+              ],
+              "dependsOn": [
+                {
+                  "target": "e2e-ci--src/example.spec.ts",
+                  "projects": "self",
+                  "params": "forward"
+                }
+              ],
+              "parallelism": false,
+              "metadata": {
+                "technologies": [
+                  "playwright"
+                ],
+                "description": "Runs Playwright Tests in CI",
+                "nonAtomizedTarget": "e2e",
+                "help": {
+                  "command": "npx playwright test --help",
+                  "example": {
+                    "options": {
+                      "workers": 1
+                    }
+                  }
+                }
+              },
+              "configurations": {},
+              "options": {}
+            },
+            "lint": {
+              "cache": true,
+              "options": {
+                "cwd": "apps/angular-task-e2e",
+                "command": "eslint ."
+              },
+              "inputs": [
+                "default",
+                "^default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{projectRoot}/.eslintrc.json",
+                "{workspaceRoot}/tools/eslint-rules/**/*",
+                {
+                  "externalDependencies": [
+                    "eslint"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "metadata": {
+                "technologies": [
+                  "eslint"
+                ],
+                "description": "Runs ESLint on project",
+                "help": {
+                  "command": "npx eslint --help",
+                  "example": {
+                    "options": {
+                      "max-warnings": 0
+                    }
+                  }
+                }
+              },
+              "executor": "nx:run-commands",
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "name": "angular-task-e2e",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "projectType": "application",
+          "sourceRoot": "apps/angular-task-e2e/src",
+          "implicitDependencies": [
+            "angular-task"
+          ],
+          "tags": []
+        }
+      },
+      "public-library": {
+        "name": "public-library",
+        "type": "lib",
+        "data": {
+          "root": "apps/public-library",
+          "targets": {
+            "lint": {
+              "executor": "@nx/eslint:lint",
+              "options": {},
+              "configurations": {},
+              "parallelism": true,
+              "cache": true,
+              "inputs": [
+                "default",
+                "{workspaceRoot}/.eslintrc.json",
+                "{workspaceRoot}/.eslintignore",
+                "{workspaceRoot}/eslint.config.js"
+              ]
+            },
+            "test": {
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
+              ],
+              "options": {
+                "jestConfig": "apps/public-library/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              },
+              "parallelism": true,
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ]
+            }
+          },
+          "name": "public-library",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "sourceRoot": "apps/public-library/src",
+          "prefix": "lib",
+          "projectType": "library",
+          "tags": [
+            "ui"
+          ],
+          "implicitDependencies": []
+        }
+      },
+      "angular-task": {
+        "name": "angular-task",
+        "type": "app",
+        "data": {
+          "root": "apps/angular-task",
+          "targets": {
+            "lint": {
+              "executor": "@nx/linter:eslint",
+              "outputs": [
+                "{options.outputFile}"
+              ],
+              "options": {
+                "lintFilePatterns": [
+                  "apps/angular-task/**/*.ts",
+                  "apps/angular-task/**/*.html"
+                ]
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "build": {
+              "executor": "@angular-devkit/build-angular:application",
+              "outputs": [
+                "{options.outputPath}"
+              ],
+              "options": {
+                "outputPath": "dist/apps/angular-task",
+                "index": "apps/angular-task/src/index.html",
+                "browser": "apps/angular-task/src/main.ts",
+                "polyfills": [
+                  "zone.js"
+                ],
+                "tsConfig": "apps/angular-task/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                  {
+                    "glob": "**/*",
+                    "input": "apps/angular-task/public"
+                  }
+                ],
+                "styles": [
+                  "apps/angular-task/src/styles.scss"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "500kb",
+                      "maximumError": "1mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "2kb",
+                      "maximumError": "4kb"
+                    }
+                  ],
+                  "outputHashing": "all"
+                },
+                "development": {
+                  "optimization": false,
+                  "extractLicenses": false,
+                  "sourceMap": true
+                }
+              },
+              "defaultConfiguration": "production",
+              "parallelism": true,
+              "cache": true,
+              "dependsOn": [
+                "^build"
+              ],
+              "inputs": [
+                "production",
+                "^production"
+              ]
+            },
+            "serve": {
+              "executor": "@angular-devkit/build-angular:dev-server",
+              "configurations": {
+                "production": {
+                  "buildTarget": "angular-task:build:production"
+                },
+                "development": {
+                  "buildTarget": "angular-task:build:development"
+                }
+              },
+              "defaultConfiguration": "development",
+              "options": {},
+              "parallelism": true
+            },
+            "extract-i18n": {
+              "executor": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "buildTarget": "angular-task:build"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "test": {
+              "executor": "@nx/jest:jest",
+              "outputs": [
+                "{workspaceRoot}/coverage/apps/angular-task"
+              ],
+              "options": {
+                "jestConfig": "apps/angular-task/jest.config.ts",
+                "passWithNoTests": true
+              },
+              "configurations": {
+                "ci": {
+                  "ci": true,
+                  "codeCoverage": true
+                }
+              },
+              "parallelism": true,
+              "cache": true,
+              "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/jest.preset.js"
+              ]
+            },
+            "server": {
+              "executor": "@angular-devkit/build-angular:server",
+              "options": {
+                "outputPath": "dist/apps/angular-task/server",
+                "main": "apps/angular-task/src/main.server.ts",
+                "tsConfig": "apps/angular-task/tsconfig.server.json"
+              },
+              "configurations": {
+                "production": {
+                  "outputHashing": "media"
+                },
+                "development": {
+                  "optimization": false,
+                  "sourceMap": true
+                }
+              },
+              "defaultConfiguration": "production",
+              "parallelism": true
+            },
+            "prerender": {
+              "executor": "@angular-devkit/build-angular:prerender",
+              "options": {
+                "buildTarget": "angular-task:build:production",
+                "serverTarget": "angular-task:server:production"
+              },
+              "configurations": {},
+              "parallelism": true
+            }
+          },
+          "name": "angular-task",
+          "$schema": "../../node_modules/nx/schemas/project-schema.json",
+          "projectType": "application",
+          "prefix": "crx",
+          "sourceRoot": "apps/angular-task/src",
+          "tags": [],
+          "implicitDependencies": []
+        }
+      }
+    },
+    "dependencies": {
+      "angular-task-e2e": [
+        {
+          "source": "angular-task-e2e",
+          "target": "angular-task",
+          "type": "implicit"
+        }
+      ],
+      "public-library": [],
+      "angular-task": []
+    }
+  }
+}
