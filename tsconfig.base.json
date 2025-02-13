@@ -17,5 +17,6 @@
     "paths": {
       "@crx/public-library": ["apps/public-library/src/index.ts"]
     }
-  }
+  },
+  "exclude": ["node_modules", "tmp"]
 }

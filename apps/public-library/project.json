@@ -4,7 +4,7 @@
   "sourceRoot": "apps/public-library/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": ["ui", "type:lib"],
+  "tags": ["scope:shared", "ui", "type:lib"],
   "targets": {
     "build": {
       "executor": "@nx/angular:ng-packagr-lite",
