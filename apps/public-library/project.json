@@ -11,7 +11,8 @@
       "outputs": ["{workspaceRoot}/dist/apps/public-library"],
       "options": {
         "project": "apps/public-library/ng-package.json",
-        "tsConfig": "apps/public-library/tsconfig.lib.json"
+        "tsConfig": "apps/public-library/tsconfig.lib.json",
+        "tailwindConfig": "apps/public-library/tailwind.config.js"
       },
       "configurations": {
         "production": {

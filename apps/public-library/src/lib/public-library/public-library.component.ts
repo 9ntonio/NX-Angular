@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './public-library.component.html',
-    styleUrl: './public-library.component.scss', // Changed from .css to .scss
+    styleUrls: ['./public-library.component.scss'],
+    // Add view encapsulation to prevent styles from leaking
+    encapsulation: ViewEncapsulation.None
 })
 export class PublicLibraryComponent {}
