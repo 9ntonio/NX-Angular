@@ -14398,6 +14398,21 @@
         "source": "angular-task",
         "target": "npm:@nx/angular",
         "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:@ngrx/store",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:@ngrx/effects",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:rxjs",
+        "type": "static"
       }
     ],
     "public-shared-library": [],
