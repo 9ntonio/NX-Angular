@@ -9,11 +9,13 @@ import { UsersEffects } from './+state/users/users.effects';
 const serverConfig: ApplicationConfig = {
     providers: [
         provideServerRendering(),
+        // !! Users State
         provideStore({
             users: usersReducer
         }),
+        // !! Users Effects
         provideEffects([UsersEffects])
-    ],
+    ]
 };
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);

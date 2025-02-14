@@ -35,10 +35,13 @@ export const appConfig: ApplicationConfig = {
             })
         ),
         provideAnimationsAsync(),
+        // !! Users Service
         UsersService,
+        // !! Users State
         provideStore({
             users: usersReducer
         }),
+        // !! Users Effects
         provideEffects([UsersEffects])
     ],
 };
