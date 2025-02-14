@@ -14152,21 +14152,6 @@
       },
       {
         "source": "angular-task",
-        "target": "npm:@angular/router",
-        "type": "static"
-      },
-      {
-        "source": "angular-task",
-        "target": "npm:@angular/platform-server",
-        "type": "static"
-      },
-      {
-        "source": "angular-task",
-        "target": "npm:@angular/platform-browser",
-        "type": "static"
-      },
-      {
-        "source": "angular-task",
         "target": "npm:jasmine-marbles",
         "type": "static"
       },
@@ -14178,6 +14163,21 @@
       {
         "source": "angular-task",
         "target": "npm:@ngrx/entity",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:@angular/platform-server",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "npm:@angular/platform-browser",
         "type": "static"
       },
       {
