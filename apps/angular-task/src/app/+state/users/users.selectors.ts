@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { UsersState } from './user.models';
 
 export const selectUsersState = createFeatureSelector<UsersState>('users');
 

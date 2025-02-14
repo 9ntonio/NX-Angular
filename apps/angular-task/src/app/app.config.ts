@@ -10,6 +10,11 @@ import { appRoutes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { UsersEffects } from './+state/users/users.effects';
+import { usersReducer } from './+state/users/users.reducer';
+import { UsersService } from './+state/users/users.service';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -30,5 +35,10 @@ export const appConfig: ApplicationConfig = {
             })
         ),
         provideAnimationsAsync(),
+        UsersService,
+        provideStore({
+            users: usersReducer
+        }),
+        provideEffects([UsersEffects])
     ],
 };
