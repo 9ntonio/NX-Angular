@@ -8,10 +8,10 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'home',
-        loadComponent: () => import('./home.component').then((m) => m.HomeComponent)
+        loadComponent: () => import('./home.component').then((c) => c.HomeComponent)
     },
     {
-        path: 'users',
-        loadComponent: () => import('./users.component').then((m) => m.UsersComponent)
+        path: 'users/:id',
+        loadComponent: () => import('./users.component').then((c) => c.UsersComponent)
     }
 ];

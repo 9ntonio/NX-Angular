@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx build public-library",
-    "startTime": "2025-02-14T00:36:55.497Z",
-    "endTime": "2025-02-14T00:36:57.475Z",
+    "startTime": "2025-02-14T02:39:33.077Z",
+    "endTime": "2025-02-14T02:39:34.875Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "public-library:build:production",
       "target": "build",
       "projectName": "public-library",
-      "hash": "9148805946949417856",
-      "startTime": "2025-02-14T00:36:55.503Z",
-      "endTime": "2025-02-14T00:36:57.475Z",
+      "hash": "10787653327435440025",
+      "startTime": "2025-02-14T02:39:33.084Z",
+      "endTime": "2025-02-14T02:39:34.875Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
