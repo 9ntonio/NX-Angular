@@ -8,7 +8,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Roboto', 'Helvetica Neue', 'system-ui', 'sans-serif'],
-                urbanist: ['Urbanist', 'Arial', 'system-ui', 'sans-serif'],
+                urbanist: ['Urbanist', 'Arial', 'system-ui', 'serif'],
             },
             colors: {
                 brand: '#ff7000',
