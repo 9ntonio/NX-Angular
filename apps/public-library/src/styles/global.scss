@@ -5,7 +5,7 @@
 @layer base {
     html,
     body {
-        @apply m-0 font-sans bg-[#c5b4a1] text-base font-normal text-[#333];
+        @apply m-0 font-sans bg-[#FFE8DB] text-base font-normal text-[#261810];
     }
 
     h1 {
@@ -23,6 +23,6 @@
     }
 
     .sub-header {
-        @apply font-urbanist text-4xl font-semibold ml-4;
+        @apply font-urbanist text-4xl font-semibold ml-2;
     }
 }

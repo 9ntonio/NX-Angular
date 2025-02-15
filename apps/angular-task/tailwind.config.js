@@ -8,10 +8,10 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Roboto', 'Helvetica Neue', 'system-ui', 'sans-serif'],
-                urbanist: ['Urbanist', 'Arial', 'sans-serif'],
+                urbanist: ['Urbanist', 'Arial', 'system-ui', 'sans-serif'],
             },
             colors: {
-                brand: '#ff0000',
+                brand: '#ff7000',
             },
         },
     },

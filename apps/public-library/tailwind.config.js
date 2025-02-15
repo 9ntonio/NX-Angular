@@ -15,7 +15,7 @@ module.exports = {
                 urbanist: ['Urbanist', 'Arial', 'sans-serif'],
             },
             colors: {
-                brand: '#ff0000',
+                brand: '#993',
             },
         },
     },
