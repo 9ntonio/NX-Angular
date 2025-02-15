@@ -1,4 +1,5 @@
 <div class="p-4 max-w-4xl mx-auto">
+    <!-- Back button -->
     <div class="mb-4">
         <button color="primary" mat-button routerLink="/home">
             <mat-icon>arrow_back</mat-icon>
@@ -6,8 +7,26 @@
         </button>
     </div>
 
-    @if (selectedUser$ | async) {
-        @if (selectedUser$ | async; as user) {
+    <!-- Loading State -->
+    @if (loading$ | async) {
+        <div class="loading-container">
+            <mat-spinner diameter="40" />
+        </div>
+    }
+
+    <!-- Error State -->
+    @if (error$ | async; as error) {
+        <div class="error-container">
+            <mat-icon class="text-red-600">error</mat-icon>
+            <p class="error-message">{{ error }}</p>
+            <p class="mt-2">The requested user could not be found.</p>
+            <button class="mt-4" color="primary" mat-raised-button routerLink="/home">Return to Home</button>
+        </div>
+    }
+
+    <!-- User Data -->
+    @if (selectedUser$ | async; as user) {
+        @if ((error$ | async) === null) {
             <mat-card>
                 <mat-card-header class="flex justify-between items-start">
                     <div>
@@ -65,10 +84,6 @@
                     </div>
                 </mat-card-content>
             </mat-card>
-        } @else {
-            <div class="text-center py-8">
-                <p>Loading user details...</p>
-            </div>
         }
     }
 </div>
