@@ -21,7 +21,7 @@
     }
 
     h1 {
-        @apply font-urbanist text-6xl font-bold m-0;
+        @apply font-urbanist text-5xl font-bold m-0;
     }
 
     p {
@@ -48,7 +48,7 @@
     }
 
     button {
-        @apply bg-brand px-3 py-1 rounded-md;
+        @apply bg-brand px-4 py-1 rounded-md;
         color: var(--color-button);
         margin-right: 0.5rem;
 
@@ -72,6 +72,7 @@
 
     hr {
         @apply border-t border-brand my-3;
+        width: 66.6%;
     }
 }
 
@@ -106,6 +107,36 @@
                 filter: none;
                 cursor: pointer;
             }
+        }
+
+        & .username {
+            color: var(--color-highlight);
+        }
+
+        & .urbanist {
+            font-family: 'Urbanist', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1.2rem !important;
+        }
+    }
+
+    .user-page {
+        & .mat-mdc-card-header {
+            @apply p-0 pt-2;
+
+            & .mat-mdc-card-title {
+                font-size: 2.5rem !important;
+                line-height: 2.5rem;
+                @apply mb-3;
+            }
+            & .mat-mdc-card-subtitle {
+                font-size: 1.75rem !important;
+                @apply mb-2;
+            }
+        }
+
+        & .mat-mdc-card-content {
+            @apply m-0 p-0 pt-6;
         }
 
         & .username {

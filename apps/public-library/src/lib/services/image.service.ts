@@ -15,7 +15,7 @@ export class ImageService {
         'https://placecats.com/louie/300/200'
     ];
 
-    private usedImages: Set<string> = new Set();
+    private readonly usedImages: Set<string> = new Set();
 
     getUniqueRandomImage (): string {
 

@@ -1,11 +1,5 @@
-<div class="p-4 max-w-4xl mx-auto">
-    <!-- Back button -->
-    <div class="mb-4">
-        <button color="primary" mat-button routerLink="/home">
-            <mat-icon>arrow_back</mat-icon>
-            Back to Users
-        </button>
-    </div>
+<div class="px-3 user-page">
+    <hr class="my-4" />
 
     <!-- Loading State -->
     @if (loading$ | async) {
@@ -28,7 +22,7 @@
     @if (selectedUser$ | async; as user) {
         @if ((error$ | async) === null) {
             <mat-card>
-                <mat-card-header class="flex justify-between items-start">
+                <!-- <mat-card-header>
                     <div>
                         <mat-card-title class="text-2xl">{{ user.name }}</mat-card-title>
                         <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
@@ -36,54 +30,64 @@
                     <button (click)="toggleFavorite(user.id)" color="warn" mat-icon-button>
                         <mat-icon>{{ user.isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
                     </button>
+                </mat-card-header> -->
+
+                <mat-card-header class="urbanist">
+                    <mat-card-title>{{ user.name }}</mat-card-title>
+                    <mat-card-subtitle class="username">{{ user.username }}</mat-card-subtitle>
                 </mat-card-header>
 
-                <mat-card-content class="mt-6">
+                <mat-card-content>
                     <!-- Contact Information -->
                     <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="text-lg font-bold mb-1">Contact Information</div>
+                        <div class="ml-3">
+                            <div><strong>Email:</strong> {{ user.email }}</div>
+                            <div><strong>Phone:</strong> {{ user.phone }}</div>
                             <div>
-                                <p><strong>Email:</strong> {{ user.email }}</p>
-                                <p><strong>Phone:</strong> {{ user.phone }}</p>
-                                <p><strong>Website:</strong> {{ user.website }}</p>
+                                <strong>Website:&nbsp;</strong> <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a>
                             </div>
                         </div>
                     </div>
 
-                    <mat-divider class="my-6" />
+                    <hr />
 
                     <!-- Address -->
                     <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-4">Address</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p><strong>Street:</strong> {{ user.address.street }}</p>
-                                <p><strong>Suite:</strong> {{ user.address.suite }}</p>
-                                <p><strong>City:</strong> {{ user.address.city }}</p>
-                                <p><strong>Zipcode:</strong> {{ user.address.zipcode }}</p>
+                        <h3 class="text-lg font-bold mb-1">Address</h3>
+                        <div class="ml-3">
+                            <div class="mb-4">
+                                <div><strong>Street:</strong> {{ user.address.street }}</div>
+                                <div><strong>Suite:</strong> {{ user.address.suite }}</div>
+                                <div><strong>City:</strong> {{ user.address.city }}</div>
+                                <div><strong>Zipcode:</strong> {{ user.address.zipcode }}</div>
                             </div>
                             <div>
-                                <p><strong>Geo Location:</strong></p>
-                                <p>Lat: {{ user.address.geo.lat }}</p>
-                                <p>Lng: {{ user.address.geo.lng }}</p>
+                                <div class="text-lg font-bold mb-1">Geo Location</div>
+                                <div><strong>Lat:</strong> {{ user.address.geo.lat }}</div>
+                                <div><strong>Lng:</strong> {{ user.address.geo.lng }}</div>
                             </div>
                         </div>
                     </div>
 
-                    <mat-divider class="my-6" />
+                    <hr />
 
                     <!-- Company Information -->
                     <div>
-                        <h3 class="text-xl font-semibold mb-4">Company Details</h3>
-                        <div>
-                            <p><strong>Company Name:</strong> {{ user.company.name }}</p>
-                            <p><strong>Catch Phrase:</strong> {{ user.company.catchPhrase }}</p>
-                            <p><strong>BS:</strong> {{ user.company.bs }}</p>
+                        <h3 class="text-lg font-bold mb-1">Company Details</h3>
+                        <div class="ml-3">
+                            <div><strong>Company Name:</strong> {{ user.company.name }}</div>
+                            <div><strong>Catch Phrase:</strong> {{ user.company.catchPhrase }}</div>
+                            <div><strong>BS:</strong> {{ user.company.bs }}</div>
                         </div>
                     </div>
                 </mat-card-content>
             </mat-card>
+
+            <!-- Back button -->
+            <div class="mt-2">
+                <button class="w-full lg:w-fit" color="primary" routerLink="/home">Back</button>
+            </div>
         }
     }
 </div>
