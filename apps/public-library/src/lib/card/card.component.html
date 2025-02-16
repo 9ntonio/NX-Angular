@@ -30,5 +30,8 @@
 
     <mat-card-actions>
         <button [routerLink]="['/users', user.id]">View Profile</button>
+        <button (click)="onFavoriteClick()" color="warn" mat-button>
+            {{ user.isFavorite ? 'Unfavorite' : 'Favorite' }}
+        </button>
     </mat-card-actions>
 </mat-card>

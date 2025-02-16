@@ -10,27 +10,8 @@
 
     <!-- Users Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        @for (_user of filteredUsers$ | async; track _user.id) {
-            <lib-card [user]="_user" />
-            <!-- <mat-card class="hover:shadow-lg transition-shadow">
-                <mat-card-header>
-                    <mat-card-title class="text-lg font-semibold">{{ user.name }}</mat-card-title>
-                    <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content class="mt-4">
-                    <div class="space-y-2">
-                        <p><strong>Email:</strong> {{ user.email }}</p>
-                        <p><strong>Company:</strong> {{ user.company.name }}</p>
-                        <p><strong>Website:</strong> {{ user.website }}</p>
-                    </div>
-                </mat-card-content>
-                <mat-card-actions class="flex justify-between items-center">
-                    <button [routerLink]="['/users', user.id]" color="primary" mat-button>View Profile</button>
-                    <button (click)="toggleFavorite(user.id)" color="warn" mat-icon-button>
-                        <mat-icon>{{ user.isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
-                    </button>
-                </mat-card-actions>
-            </mat-card> -->
+        @for (user of filteredUsers$ | async; track user.id) {
+            <lib-card (favoriteToggled)="onFavoriteToggled($event)" [user]="user" />
         } @empty {
             <div class="col-span-full text-center py-8">
                 <p class="text-brand font-bold">No users found matching your criteria</p>

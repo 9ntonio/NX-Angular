@@ -1,3 +1,4 @@
+<!-- apps/angular-task/src/app/users.component.html -->
 <div class="px-3 user-page">
     <hr class="my-4" />
 
@@ -13,7 +14,6 @@
         <div class="error-container">
             <mat-icon class="text-red-600">error</mat-icon>
             <p class="error-message">{{ error }}</p>
-            <p class="mt-2">The requested user could not be found.</p>
             <button class="mt-4" color="primary" mat-raised-button routerLink="/home">Return to Home</button>
         </div>
     }
@@ -22,16 +22,6 @@
     @if (selectedUser$ | async; as user) {
         @if ((error$ | async) === null) {
             <mat-card>
-                <!-- <mat-card-header>
-                    <div>
-                        <mat-card-title class="text-2xl">{{ user.name }}</mat-card-title>
-                        <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
-                    </div>
-                    <button (click)="toggleFavorite(user.id)" color="warn" mat-icon-button>
-                        <mat-icon>{{ user.isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
-                    </button>
-                </mat-card-header> -->
-
                 <mat-card-header class="urbanist">
                     <mat-card-title>{{ user.name }}</mat-card-title>
                     <mat-card-subtitle class="username">{{ user.username }}</mat-card-subtitle>
@@ -40,12 +30,13 @@
                 <mat-card-content>
                     <!-- Contact Information -->
                     <div class="mb-6">
-                        <div class="text-lg font-bold mb-1">Contact Information</div>
+                        <h3 class="text-lg font-bold mb-1">Contact Information</h3>
                         <div class="ml-3">
                             <div><strong>Email:</strong> {{ user.email }}</div>
                             <div><strong>Phone:</strong> {{ user.phone }}</div>
                             <div>
-                                <strong>Website:&nbsp;</strong> <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a>
+                                <strong>Website:</strong>
+                                <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a>
                             </div>
                         </div>
                     </div>
@@ -56,16 +47,16 @@
                     <div class="mb-6">
                         <h3 class="text-lg font-bold mb-1">Address</h3>
                         <div class="ml-3">
-                            <div class="mb-4">
-                                <div><strong>Street:</strong> {{ user.address.street }}</div>
-                                <div><strong>Suite:</strong> {{ user.address.suite }}</div>
-                                <div><strong>City:</strong> {{ user.address.city }}</div>
-                                <div><strong>Zipcode:</strong> {{ user.address.zipcode }}</div>
-                            </div>
-                            <div>
-                                <div class="text-lg font-bold mb-1">Geo Location</div>
-                                <div><strong>Lat:</strong> {{ user.address.geo.lat }}</div>
-                                <div><strong>Lng:</strong> {{ user.address.geo.lng }}</div>
+                            <div><strong>Street:</strong> {{ user.address.street }}</div>
+                            <div><strong>Suite:</strong> {{ user.address.suite }}</div>
+                            <div><strong>City:</strong> {{ user.address.city }}</div>
+                            <div><strong>Zipcode:</strong> {{ user.address.zipcode }}</div>
+                            <div class="mt-2">
+                                <strong>Location:</strong>
+                                <div class="ml-3">
+                                    <div>Lat: {{ user.address.geo.lat }}</div>
+                                    <div>Lng: {{ user.address.geo.lng }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -73,21 +64,31 @@
                     <hr />
 
                     <!-- Company Information -->
-                    <div>
+                    <div class="mb-6">
                         <h3 class="text-lg font-bold mb-1">Company Details</h3>
                         <div class="ml-3">
-                            <div><strong>Company Name:</strong> {{ user.company.name }}</div>
+                            <div><strong>Name:</strong> {{ user.company.name }}</div>
                             <div><strong>Catch Phrase:</strong> {{ user.company.catchPhrase }}</div>
                             <div><strong>BS:</strong> {{ user.company.bs }}</div>
                         </div>
                     </div>
-                </mat-card-content>
-            </mat-card>
 
-            <!-- Back button -->
-            <div class="mt-2">
-                <button class="w-full lg:w-fit" color="primary" routerLink="/home">Back</button>
-            </div>
+                    <!-- Favorite Status -->
+                    <div class="favorite-status">
+                        <strong>Favorite Status:</strong>
+                        <span [class.text-red-500]="user.isFavorite">
+                            {{ user.isFavorite ? 'Favorited' : 'Not Favorited' }}
+                        </span>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions class="action-buttons">
+                    <button (click)="toggleFavorite(user.id)" [color]="user.isFavorite ? 'warn' : 'primary'" mat-raised-button>
+                        {{ user.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+                    </button>
+                    <button mat-button routerLink="/home">Back to Home</button>
+                </mat-card-actions>
+            </mat-card>
         }
     }
 </div>

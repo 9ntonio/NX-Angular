@@ -2,7 +2,6 @@ import { createReducer, on } from '@ngrx/store';
 import { UsersActions } from './users.actions';
 import { UsersState } from './user.models';
 
-// !! Define initial state
 export const initialState: UsersState = {
     users: [],
     selectedUser: null,
@@ -16,17 +15,23 @@ export const initialState: UsersState = {
 
 export const usersReducer = createReducer(
     initialState,
+
     // !! Load all users reducers
     on(UsersActions.loadUsers, (state) => ({
         ...state,
         loading: true,
         error: null,
     })),
+
     on(UsersActions.loadUsersSuccess, (state, { users }) => ({
         ...state,
-        users,
+        users: users.map((user) => ({
+            ...user,
+            isFavorite: state.users.find((u) => u.id === user.id)?.isFavorite || false
+        })),
         loading: false,
     })),
+
     on(UsersActions.loadUsersFailure, (state, { error }) => ({
         ...state,
         error,
@@ -39,14 +44,26 @@ export const usersReducer = createReducer(
         loading: true,
         error: null,
     })),
-    on(UsersActions.loadUserSuccess, (state, { user }) => ({
-        ...state,
-        selectedUser: user,
-        loading: false,
-        // !! Update user in the users array if it exists
-        users: state.users.map((existingUser) =>
-            existingUser.id === user.id ? { ...user, isFavorite: existingUser.isFavorite } : existingUser),
-    })),
+
+    on(UsersActions.loadUserSuccess, (state, { user }) => {
+
+        const existingUser = state.users.find((u) => u.id === user.id);
+        const updatedUser = {
+            ...user,
+            isFavorite: existingUser?.isFavorite || false
+        };
+
+        return {
+            ...state,
+            selectedUser: updatedUser,
+            loading: false,
+            users: state.users.some((u) => u.id === user.id)
+                ? state.users.map((u) => u.id === user.id ? updatedUser : u)
+                : [...state.users, updatedUser]
+        };
+
+    }),
+
     on(UsersActions.loadUserFailure, (state, { error }) => ({
         ...state,
         error,
@@ -58,17 +75,25 @@ export const usersReducer = createReducer(
         ...state,
         selectedUser: state.users.find((user) => user.id === userId) || null,
     })),
-    on(UsersActions.toggleFavorite, (state, { userId }) => ({
-        ...state,
-        users: state.users.map((user) =>
-            user.id === userId ? { ...user, isFavorite: !user.isFavorite } : user),
-        selectedUser:
-            state.selectedUser?.id === userId
-                ? { ...state.selectedUser, isFavorite: !state.selectedUser.isFavorite }
-                : state.selectedUser,
-    })),
 
-    // Filter reducers
+    on(UsersActions.toggleFavorite, (state, { userId }) => {
+
+        const updatedUsers = state.users.map((user) =>
+            user.id === userId
+                ? { ...user, isFavorite: !user.isFavorite }
+                : user);
+
+        return {
+            ...state,
+            users: updatedUsers,
+            selectedUser: state.selectedUser?.id === userId
+                ? { ...state.selectedUser, isFavorite: !state.selectedUser.isFavorite }
+                : state.selectedUser
+        };
+
+    }),
+
+    // !! Filter reducers
     on(UsersActions.setFilter, (state, { searchTerm }) => ({
         ...state,
         filters: {
@@ -76,6 +101,7 @@ export const usersReducer = createReducer(
             searchTerm,
         },
     })),
+
     on(UsersActions.toggleFavoritesFilter, (state) => ({
         ...state,
         filters: {

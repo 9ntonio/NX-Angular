@@ -26,37 +26,7 @@ import { selectUserById, selectSelectedUser, selectLoading, selectError } from '
         MatProgressSpinnerModule
     ],
     templateUrl: './users.component.html',
-    styles: [
-        `
-            :host {
-                display: block;
-            }
-
-            .mat-divider {
-                margin: 1rem 0;
-            }
-
-            .error-container {
-                text-align: center;
-                padding: 2rem;
-                background-color: #fef2f2;
-                border-radius: 0.5rem;
-                margin: 2rem;
-            }
-
-            .error-message {
-                color: #dc2626;
-                font-weight: 500;
-            }
-
-            .loading-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 2rem;
-            }
-        `,
-    ],
+    styles: [],
 })
 export class UsersComponent implements OnInit, OnDestroy {
 
@@ -91,7 +61,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         )
         .subscribe((userId) => {
 
-            // !! Check if user already exists in store
+            // !! Check if user exists in store
             this.store
             .select(selectUserById(userId))
             .pipe(take(1))
@@ -127,6 +97,13 @@ export class UsersComponent implements OnInit, OnDestroy {
 
         // !! Toggle favorite status
         this.store.dispatch(UsersActions.toggleFavorite({ userId }));
+
+    }
+
+    navigateBack (): void {
+
+        // !! Helper method to navigate back to home
+        this.store.dispatch(UsersActions.loadUsers());
 
     }
 
