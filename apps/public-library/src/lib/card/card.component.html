@@ -11,7 +11,10 @@
         <div>
             <div><strong>Email:</strong> {{ user.email }}</div>
             <div><strong>Company:</strong> {{ user.company.name }}</div>
-            <div><strong>Website:</strong> {{ user.website }}</div>
+            <div>
+                <strong>Website: </strong>
+                <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a>
+            </div>
         </div>
     </mat-card-content>
 

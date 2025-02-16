@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
+import { ImageService } from '../services/image.service';
 
 @Component({
     selector: 'lib-card',
@@ -38,47 +39,17 @@ export class CardComponent {
         }
     };
 
-    private readonly imageUrls = [
-        'https://placecats.com/bella/300/200',
-        'https://placecats.com/millie_neo/300/200',
-        'https://placecats.com/millie/300/200',
-        'https://placecats.com/neo_banana/300/200',
-        'https://placecats.com/neo_2/300/200',
-        'https://placecats.com/poppy/300/200',
-        'https://placecats.com/louie/300/200'
-    ];
+    private readonly imageUrl: string;
 
-    private availableIndices: number[] = [];
-    private lastUsedIndex: number | null = null;
+    constructor (private readonly imageService: ImageService) {
+
+        this.imageUrl = this.imageService.getUniqueRandomImage();
+
+    }
 
     get randomImageUrl (): string {
 
-        // !! Reset available indices if empty
-        if (this.availableIndices.length === 0) {
-
-            this.availableIndices = Array.from({ length: this.imageUrls.length }, (_, i) => i);
-            // !! If we have a lastUsedIndex, remove it from available indices to avoid repetition
-            if (this.lastUsedIndex !== null) {
-
-                const indexToRemove = this.availableIndices.indexOf(this.lastUsedIndex);
-                if (indexToRemove !== -1) {
-
-                    this.availableIndices.splice(indexToRemove, 1);
-
-                }
-
-            }
-
-        }
-
-        // !! Get random index from available indices
-        const randomPosition = Math.floor(Math.random() * this.availableIndices.length);
-        const selectedIndex = this.availableIndices.splice(randomPosition, 1)[0];
-
-        // !! Store the selected index for next iteration
-        this.lastUsedIndex = selectedIndex;
-
-        return this.imageUrls[selectedIndex];
+        return this.imageUrl;
 
     }
 
