@@ -7,7 +7,6 @@
     <img [routerLink]="['/users', user.id]" [src]="randomImageUrl" alt="Photo" mat-card-image />
     <mat-card-content>
         <div>
-            <div><strong>Favorite:</strong> {{ user.isFavorite ? 'Yes' : 'No' }}</div>
             <div><strong>Email:</strong> {{ user.email }}</div>
             <div><strong>Company:</strong> {{ user.company.name }}</div>
             <div>
@@ -24,13 +23,16 @@
                 </div>
             </div>
             <hr />
-            <span> <strong>BS: </strong>{{ user.company.bs }} </span>
+            <div class="flex flex-col">
+                <div><strong>BS: </strong>{{ user.company.bs }}</div>
+                <div><strong>Favorite: </strong>{{ user.isFavorite ? '❤️' : '🚫' }}</div>
+            </div>
         </div>
     </mat-card-content>
 
     <mat-card-actions>
         <button [routerLink]="['/users', user.id]">View Profile</button>
-        <button (click)="onFavoriteClick()" color="warn" mat-button>
+        <button (click)="onFavoriteClick()" color="warn">
             {{ user.isFavorite ? 'Unfavorite' : 'Favorite' }}
         </button>
     </mat-card-actions>
