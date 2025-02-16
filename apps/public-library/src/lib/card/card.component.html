@@ -1,20 +1,30 @@
 <mat-card appearance="outlined" class="lib-card">
     <mat-card-header class="urbanist header-margin">
-        <span class="flex">
-            <mat-card-title>{{ user.name }}</mat-card-title>
-            <div>q:&nbsp;</div>
-            <mat-card-subtitle class="username">{{ user.username }}</mat-card-subtitle>
-        </span>
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <div>:&nbsp;</div>
+        <mat-card-subtitle class="username">{{ user.username }}</mat-card-subtitle>
     </mat-card-header>
-    <img [src]="randomImageUrl" alt="Photo" mat-card-image />
+    <img [routerLink]="['/users', user.id]" [src]="randomImageUrl" alt="Photo" mat-card-image />
     <mat-card-content>
         <div>
+            <div><strong>Favorite:</strong> {{ user.isFavorite ? 'Yes' : 'No' }}</div>
             <div><strong>Email:</strong> {{ user.email }}</div>
             <div><strong>Company:</strong> {{ user.company.name }}</div>
             <div>
                 <strong>Website: </strong>
                 <a href="https://{{ user.website }}" target="_blank">{{ user.website }}</a>
             </div>
+            <div><strong>Phone:</strong> {{ user.phone }}</div>
+            <hr />
+            <div>
+                <strong>Address:</strong>
+                <div>
+                    {{ user.address.street }}, {{ user.address.suite }}, <br />
+                    {{ user.address.city }}, {{ user.address.zipcode }}
+                </div>
+            </div>
+            <hr />
+            <span> <strong>BS: </strong>{{ user.company.bs }} </span>
         </div>
     </mat-card-content>
 
