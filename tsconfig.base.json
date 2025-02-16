@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@crx/public-library": ["apps/public-library/src/index.ts"]
+      "@crx/public-library": ["apps/public-library/src/index.ts"],
+      "@crx/shared-models": ["apps/angular-task/src/app/+state/users/user.models.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

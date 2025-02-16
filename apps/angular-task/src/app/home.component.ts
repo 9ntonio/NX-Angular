@@ -12,6 +12,7 @@ import { UsersActions } from './+state/users/users.actions';
 import { Observable } from 'rxjs';
 import { User } from './+state/users/user.models';
 import { AppState } from './app.state';
+import { CardComponent } from '@crx/public-library';
 
 @Component({
     selector: 'crx-home',
@@ -24,7 +25,8 @@ import { AppState } from './app.state';
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule
+        FormsModule,
+        CardComponent
     ],
     templateUrl: './home.component.html',
 })

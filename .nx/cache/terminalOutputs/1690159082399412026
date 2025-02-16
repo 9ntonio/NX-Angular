@@ -1,0 +1,18 @@
+[34mBuilding Angular Package[39m
+[37m[39m
+[37m------------------------------------------------------------------------------[39m
+[37mBuilding entry point '@crx/public-library'[39m
+[37m------------------------------------------------------------------------------[39m
+[36m⠋[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠙[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠹[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠸[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠼[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠴[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠦[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠧[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠇[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[36m⠏[39m Compiling with Angular sources in Ivy partial compilation mode.[2K[1G[32m✔[39m Compiling with Angular sources in Ivy partial compilation mode.
+Copying assets
+Writing package manifest
+Built @crx/public-library
+[32m[39m
+[32m------------------------------------------------------------------------------[39m
+[32mBuilt Angular Package[39m
+[32m - from: /Users/9ntonio/Work/crexi/apps/public-library[39m
+[32m - to:   /Users/9ntonio/Work/crexi/dist/apps/public-library[39m
+[32m------------------------------------------------------------------------------[39m
+[37m[37m[39m[37m[39m
+[37m[37mBuild at: [1m2025-02-15T22:11:58.159Z[22m - Time: [1m1133[22mms[39m[37m[39m
+[37m[37m[39m[37m[39m

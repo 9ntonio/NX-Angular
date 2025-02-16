@@ -1,1 +1,1 @@
-export { PublicLibraryComponent } from './lib/public-library/public-library.component';
+export { CardComponent } from './lib/card/card.component';

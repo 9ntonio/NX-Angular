@@ -14463,6 +14463,16 @@
       },
       {
         "source": "public-library",
+        "target": "npm:@angular/material",
+        "type": "static"
+      },
+      {
+        "source": "public-library",
+        "target": "npm:@angular/router",
+        "type": "static"
+      },
+      {
+        "source": "public-library",
         "target": "npm:jest-preset-angular",
         "type": "static"
       },
@@ -14531,6 +14541,11 @@
       {
         "source": "angular-task",
         "target": "npm:@angular/forms",
+        "type": "static"
+      },
+      {
+        "source": "angular-task",
+        "target": "public-library",
         "type": "static"
       },
       {

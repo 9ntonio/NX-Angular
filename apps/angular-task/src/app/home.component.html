@@ -1,21 +1,18 @@
 <div class="p-4">
-    <h1 class="text-2xl font-bold mb-6">All Users</h1>
-
     <!-- Search and Filter Controls -->
-    <div class="mb-6 flex gap-4">
-        <mat-form-field>
-            <mat-label>Search Users</mat-label>
-            <input (ngModelChange)="onSearch($event)" [(ngModel)]="searchTerm" matInput placeholder="Search by name or email" />
-        </mat-form-field>
-        <button (click)="toggleFavorites()" color="primary" mat-raised-button>
+    <div>
+        <input (ngModelChange)="onSearch($event)" [(ngModel)]="searchTerm" matInput placeholder="Search by name or email" />
+
+        <!-- <button (click)="toggleFavorites()" color="primary" mat-raised-button>
             {{ showFavoritesOnly ? 'Show All' : 'Show Favorites' }}
-        </button>
+        </button> -->
     </div>
 
     <!-- Users Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @for (user of filteredUsers$ | async; track user.id) {
-            <mat-card class="hover:shadow-lg transition-shadow">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        @for (_user of filteredUsers$ | async; track _user.id) {
+            <lib-card [user]="_user" />
+            <!-- <mat-card class="hover:shadow-lg transition-shadow">
                 <mat-card-header>
                     <mat-card-title class="text-lg font-semibold">{{ user.name }}</mat-card-title>
                     <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
@@ -33,10 +30,10 @@
                         <mat-icon>{{ user.isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
                     </button>
                 </mat-card-actions>
-            </mat-card>
+            </mat-card> -->
         } @empty {
             <div class="col-span-full text-center py-8">
-                <p class="text-gray-500">No users found matching your criteria</p>
+                <p class="text-brand font-bold">No users found matching your criteria</p>
             </div>
         }
     </div>
