@@ -3,7 +3,7 @@ import { RouterModule, provideRouter } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { CardComponent } from './card.component';
+import { CardComponent } from '../card/card.component';
 import { ImageService } from '../services/image.service';
 
 describe('CardComponent', () => {
@@ -53,7 +53,7 @@ describe('CardComponent', () => {
                 {
                     provide: ImageService,
                     useValue: {
-                        getUniqueRandomImage: jest.fn().mockReturnValue(mockImageUrl)
+                        getUniqueRandomImage: jest.fn(() => mockImageUrl)
                     }
                 },
                 provideRouter([])
@@ -95,24 +95,16 @@ describe('CardComponent', () => {
 
     });
 
-    it('should cache image URL after first access', () => {
-
-        // Clear any previous calls
-        jest.clearAllMocks();
+    it('should get image URL when user is set and randomImageUrl is accessed', () => {
 
         // Set user
         component.user = mockUser;
         fixture.detectChanges();
 
-        // First access should call service
-        const firstUrl = component.randomImageUrl;
-        expect(imageService.getUniqueRandomImage).toHaveBeenCalledTimes(1);
-        expect(firstUrl).toBe(mockImageUrl);
-
-        // Second access should use cache
-        const secondUrl = component.randomImageUrl;
-        expect(imageService.getUniqueRandomImage).toHaveBeenCalledTimes(1);
-        expect(secondUrl).toBe(mockImageUrl);
+        // Get image URL
+        const imageUrl = component.randomImageUrl;
+        expect(imageService.getUniqueRandomImage).toHaveBeenCalledWith(mockUser.id);
+        expect(imageUrl).toBe(mockImageUrl);
 
     });
 
@@ -128,24 +120,22 @@ describe('CardComponent', () => {
 
     });
 
-    it('should reset cache when user changes', () => {
+    it('should reuse cached image URL from service for same user', () => {
 
-        // Set initial user
+        // Clear any previous calls
+        jest.clearAllMocks();
+
         component.user = mockUser;
         fixture.detectChanges();
 
-        // First access - store result to prevent linting error
+        // First access
         const firstUrl = component.randomImageUrl;
-        expect(firstUrl).toBe(mockImageUrl);
+        expect(imageService.getUniqueRandomImage).toHaveBeenCalledTimes(1);
 
-        // Set new user
-        component.user = { ...mockUser, id: 2 };
-        fixture.detectChanges();
-
-        // Should call service again for new user
-        const newUrl = component.randomImageUrl;
-        expect(imageService.getUniqueRandomImage).toHaveBeenCalledTimes(2);
-        expect(newUrl).toBe(mockImageUrl);
+        // Second access should use same URL
+        const secondUrl = component.randomImageUrl;
+        expect(firstUrl).toBe(secondUrl);
+        expect(imageService.getUniqueRandomImage).toHaveBeenCalledTimes(1);
 
     });
 

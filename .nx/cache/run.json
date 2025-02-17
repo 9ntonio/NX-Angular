@@ -1,84 +1,18 @@
 {
   "run": {
-    "command": "nx run-many -t lint test build",
-    "startTime": "2025-02-17T18:23:53.830Z",
-    "endTime": "2025-02-17T18:23:59.604Z",
+    "command": "nx build public-library",
+    "startTime": "2025-02-17T22:21:33.712Z",
+    "endTime": "2025-02-17T22:21:35.371Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "public-library:lint",
-      "target": "lint",
-      "projectName": "public-library",
-      "hash": "6144403173152054488",
-      "startTime": "2025-02-17T18:23:53.858Z",
-      "endTime": "2025-02-17T18:23:55.226Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
       "taskId": "public-library:build:production",
       "target": "build",
       "projectName": "public-library",
-      "hash": "8512002291735160118",
-      "startTime": "2025-02-17T18:23:53.841Z",
-      "endTime": "2025-02-17T18:23:55.719Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "public-library:test",
-      "target": "test",
-      "projectName": "public-library",
-      "hash": "9141668436602474930",
-      "startTime": "2025-02-17T18:23:53.842Z",
-      "endTime": "2025-02-17T18:23:56.129Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task:lint",
-      "target": "lint",
-      "projectName": "angular-task",
-      "hash": "12296279186570292030",
-      "startTime": "2025-02-17T18:23:55.227Z",
-      "endTime": "2025-02-17T18:23:56.234Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task-e2e:lint",
-      "target": "lint",
-      "projectName": "angular-task-e2e",
-      "hash": "7460529504722636004",
-      "startTime": "2025-02-17T18:23:56.234Z",
-      "endTime": "2025-02-17T18:23:57.309Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task:test",
-      "target": "test",
-      "projectName": "angular-task",
-      "hash": "14898065530792797972",
-      "startTime": "2025-02-17T18:23:55.720Z",
-      "endTime": "2025-02-17T18:23:58.772Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task:build:production",
-      "target": "build",
-      "projectName": "angular-task",
-      "hash": "8482811072321186328",
-      "startTime": "2025-02-17T18:23:56.129Z",
-      "endTime": "2025-02-17T18:23:59.604Z",
+      "hash": "14766039269908461129",
+      "startTime": "2025-02-17T22:21:33.719Z",
+      "endTime": "2025-02-17T22:21:35.370Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

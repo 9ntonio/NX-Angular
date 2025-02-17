@@ -15,24 +15,51 @@ export class ImageService {
         'https://placecats.com/louie/300/200'
     ];
 
-    private readonly usedImages: Set<string> = new Set();
+    // This map persists across navigation since service is singleton
+    private readonly userImageMap = new Map<number, string>();
 
-    getUniqueRandomImage (): string {
+    getUniqueRandomImage (userId: number): string {
 
-        const availableImages = this.imageUrls.filter((url) => !this.usedImages.has(url));
+        // Always check the persistent map first
+        const existingImage = this.userImageMap.get(userId);
+        if (existingImage) {
 
-        // !! If all images are used, reset the tracking
-        if (availableImages.length === 0) {
-
-            this.usedImages.clear();
-            return this.getUniqueRandomImage();
+            return existingImage;
 
         }
 
-        const randomIndex = Math.floor(Math.random() * availableImages.length);
-        const selectedImage = availableImages[randomIndex];
-        this.usedImages.add(selectedImage);
+        // If no image exists, get the least used one
+        const imageCounts = new Map<string, number>();
+        this.userImageMap.forEach((url) => {
+
+            imageCounts.set(url, (imageCounts.get(url) ?? 0) + 1);
+
+        });
+
+        let selectedImage = this.imageUrls[0];
+        let lowestCount = Infinity;
+
+        this.imageUrls.forEach((url) => {
+
+            const count = imageCounts.get(url) ?? 0;
+            if (count < lowestCount) {
+
+                lowestCount = count;
+                selectedImage = url;
+
+            }
+
+        });
+
+        // Store in persistent map and return
+        this.userImageMap.set(userId, selectedImage);
         return selectedImage;
+
+    }
+
+    clearImageAssignments (): void {
+
+        this.userImageMap.clear();
 
     }
 

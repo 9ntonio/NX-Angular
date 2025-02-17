@@ -1,6 +1,6 @@
 {
-  "9357788804126202597": {},
-  "12841021747072395947": {
+  "8033317594829289041": {},
+  "6251206152374154080": {
     "apps/angular-task": {
       "targets": {
         "lint": {
@@ -84,7 +84,7 @@
       }
     }
   },
-  "7633727043205870299": {
+  "2086677346941100605": {
     "apps/public-library": {
       "targets": {
         "lint": {
@@ -127,94 +127,5 @@
     }
   },
   "18439732450142545236": {},
-  "12546713816152822381": {},
-  "5317297314604528387": {},
-  "13113361123919679898": {},
-  "16645500140937740912": {
-    "apps/public-library": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "apps/public-library"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "12714430851757843410": {},
-  "9462309496616796909": {
-    "apps/public-library": {
-      "targets": {
-        "lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "apps/public-library"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "npx eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "14887660494979917533": {},
-  "16192404004979822141": {}
+  "2486063603754363319": {}
 }

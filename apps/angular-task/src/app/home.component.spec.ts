@@ -1,6 +1,3 @@
-/* eslint-disable @angular-eslint/component-selector */
-// apps/angular-task/src/app/home.component.spec.ts
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { RouterModule, provideRouter } from '@angular/router';
@@ -17,6 +14,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Mock Card Component
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'lib-card',
     template: '<div>Mock Card</div>'
 })

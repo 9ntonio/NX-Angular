@@ -5,8 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { ImageService } from '../services/image.service';
 
-// !! Define the User type here since it's used in the component
-// TODO: Move this to a shared types file
 type User = {
     id: number;
     name: string;
@@ -37,13 +35,12 @@ type User = {
     standalone: true,
     imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
     templateUrl: './card.component.html',
-    styleUrl: './card.component.scss',
+    styleUrls: ['./card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
 
-    // !! Use type annotation instead of interface for input
-    @Input({ required: true }) user: User = {
+    private activeUser: User = {
         id: 0,
         name: '',
         username: '',
@@ -67,19 +64,43 @@ export class CardComponent {
         }
     };
 
-    @Output() favoriteToggled = new EventEmitter<number>();
+    // Store the image URL to prevent multiple service calls
+    private cachedImageUrl: string | null = null;
 
-    private readonly imageUrl: string;
+    @Input({ required: true })
+    set user (value: User) {
 
-    constructor (private readonly imageService: ImageService) {
-
-        this.imageUrl = this.imageService.getUniqueRandomImage();
+        this.activeUser = value;
+        // Reset cache when user changes
+        this.cachedImageUrl = null;
 
     }
 
+    get user (): User {
+
+        return this.activeUser;
+
+    }
+
+    @Output() favoriteToggled = new EventEmitter<number>();
+
+    constructor (private readonly imageService: ImageService) {}
+
     get randomImageUrl (): string {
 
-        return this.imageUrl;
+        if (!this.user.id) {
+
+            return '';
+
+        }
+
+        if (!this.cachedImageUrl) {
+
+            this.cachedImageUrl = this.imageService.getUniqueRandomImage(this.user.id);
+
+        }
+
+        return this.cachedImageUrl;
 
     }
 
