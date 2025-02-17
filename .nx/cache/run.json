@@ -1,18 +1,18 @@
 {
   "run": {
-    "command": "nx run public-library:test",
-    "startTime": "2025-02-17T01:37:57.891Z",
-    "endTime": "2025-02-17T01:38:00.502Z",
+    "command": "nx run angular-task:test",
+    "startTime": "2025-02-17T01:50:57.101Z",
+    "endTime": "2025-02-17T01:51:00.688Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "public-library:test",
+      "taskId": "angular-task:test",
       "target": "test",
-      "projectName": "public-library",
-      "hash": "3004460680437203316",
-      "startTime": "2025-02-17T01:37:57.897Z",
-      "endTime": "2025-02-17T01:38:00.501Z",
+      "projectName": "angular-task",
+      "hash": "16829202420939105531",
+      "startTime": "2025-02-17T01:50:57.107Z",
+      "endTime": "2025-02-17T01:51:00.688Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
