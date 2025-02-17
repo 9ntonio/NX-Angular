@@ -82,8 +82,8 @@
                 </mat-card-content>
 
                 <mat-card-actions class="mt-4">
-                    <button routerLink="/home">Home</button>
-                    <button (click)="toggleFavorite(user.id)">
+                    <button class="w-full sm:w-fit" routerLink="/home">Home</button>
+                    <button (click)="toggleFavorite(user.id)" class="w-full sm:w-fit">
                         {{ user.isFavorite ? 'Unfavorite' : 'Favorite' }}
                     </button>
                 </mat-card-actions>
