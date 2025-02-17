@@ -1,62 +1,18 @@
 {
   "run": {
     "command": "nx run-many -t lint test build",
-    "startTime": "2025-02-17T02:06:35.885Z",
-    "endTime": "2025-02-17T02:06:37.689Z",
+    "startTime": "2025-02-17T02:23:15.275Z",
+    "endTime": "2025-02-17T02:23:21.010Z",
     "inner": false
   },
   "tasks": [
-    {
-      "taskId": "public-library:test",
-      "target": "test",
-      "projectName": "public-library",
-      "hash": "3004460680437203316",
-      "startTime": "2025-02-17T02:06:35.896Z",
-      "endTime": "2025-02-17T02:06:35.931Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
     {
       "taskId": "public-library:lint",
       "target": "lint",
       "projectName": "public-library",
       "hash": "17728335511906188456",
-      "startTime": "2025-02-17T02:06:35.915Z",
-      "endTime": "2025-02-17T02:06:35.936Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task:test",
-      "target": "test",
-      "projectName": "angular-task",
-      "hash": "16829202420939105531",
-      "startTime": "2025-02-17T02:06:35.937Z",
-      "endTime": "2025-02-17T02:06:35.940Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task-e2e:lint",
-      "target": "lint",
-      "projectName": "angular-task-e2e",
-      "hash": "16335374552150346684",
-      "startTime": "2025-02-17T02:06:35.942Z",
-      "endTime": "2025-02-17T02:06:36.881Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 0
-    },
-    {
-      "taskId": "angular-task:lint",
-      "target": "lint",
-      "projectName": "angular-task",
-      "hash": "8509765235937869912",
-      "startTime": "2025-02-17T02:06:35.934Z",
-      "endTime": "2025-02-17T02:06:37.063Z",
+      "startTime": "2025-02-17T02:23:15.301Z",
+      "endTime": "2025-02-17T02:23:16.302Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -66,8 +22,52 @@
       "target": "build",
       "projectName": "public-library",
       "hash": "16437451340379491553",
-      "startTime": "2025-02-17T02:06:35.896Z",
-      "endTime": "2025-02-17T02:06:37.686Z",
+      "startTime": "2025-02-17T02:23:15.285Z",
+      "endTime": "2025-02-17T02:23:16.991Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "angular-task:lint",
+      "target": "lint",
+      "projectName": "angular-task",
+      "hash": "8509765235937869912",
+      "startTime": "2025-02-17T02:23:16.303Z",
+      "endTime": "2025-02-17T02:23:17.338Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "public-library:test",
+      "target": "test",
+      "projectName": "public-library",
+      "hash": "3004460680437203316",
+      "startTime": "2025-02-17T02:23:15.285Z",
+      "endTime": "2025-02-17T02:23:18.001Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "angular-task-e2e:lint",
+      "target": "lint",
+      "projectName": "angular-task-e2e",
+      "hash": "16335374552150346684",
+      "startTime": "2025-02-17T02:23:18.004Z",
+      "endTime": "2025-02-17T02:23:19.539Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "angular-task:test",
+      "target": "test",
+      "projectName": "angular-task",
+      "hash": "16829202420939105531",
+      "startTime": "2025-02-17T02:23:16.992Z",
+      "endTime": "2025-02-17T02:23:20.888Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0
@@ -77,10 +77,10 @@
       "target": "build",
       "projectName": "angular-task",
       "hash": "13883642659098539089",
-      "startTime": "2025-02-17T02:06:37.687Z",
-      "endTime": "2025-02-17T02:06:37.688Z",
+      "startTime": "2025-02-17T02:23:17.338Z",
+      "endTime": "2025-02-17T02:23:21.010Z",
       "params": "",
-      "cacheStatus": "local-cache-hit",
+      "cacheStatus": "cache-miss",
       "status": 0
     }
   ]
