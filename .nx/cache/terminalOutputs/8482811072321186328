@@ -1,0 +1,22 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m  [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
+[37m[32mchunk-ZCFUEIVS.js[39m[37m    [2m | [22m[2m-[22m              [2m | [22m[36m166.04 kB[39m[37m[2m | [22m               [36m48.66 kB[39m[37m[39m
+[37m[32mchunk-DTW3H64I.js[39m[37m    [2m | [22m[2m-[22m              [2m | [22m[36m122.92 kB[39m[37m[2m | [22m               [36m31.47 kB[39m[37m[39m
+[37m[32mpolyfills-FFHMD2TL.js[39m[37m[2m | [22m[2mpolyfills[22m      [2m | [22m [36m34.52 kB[39m[37m[2m | [22m               [36m11.28 kB[39m[37m[39m
+[37m[32mmain-GB4EYTSP.js[39m[37m     [2m | [22m[2mmain[22m           [2m | [22m [36m10.89 kB[39m[37m[2m | [22m                [36m3.53 kB[39m[37m[39m
+[37m[32mstyles-TCQXCKHL.css[39m[37m  [2m | [22m[2mstyles[22m         [2m | [22m  [36m8.59 kB[39m[37m[2m | [22m                [36m2.07 kB[39m[37m[39m
+[37m[39m
+[37m[1m [22m                    [2m | [22m[1mInitial total[22m  [2m | [22m[1m342.95 kB[22m[2m | [22m               [1m97.00 kB[22m[39m
+[37m[39m
+[37m[1mLazy chunk files[22m     [2m | [22m[1mNames[22m          [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m[39m
+[37m[32mchunk-WCCLFOKL.js[39m[37m    [2m | [22m[2mbrowser[22m        [2m | [22m [36m63.60 kB[39m[37m[2m | [22m               [36m16.85 kB[39m[37m[39m
+[37m[32mchunk-5EQ4NPUJ.js[39m[37m    [2m | [22m[2m-[22m              [2m | [22m [36m54.30 kB[39m[37m[2m | [22m               [36m10.75 kB[39m[37m[39m
+[37m[32mchunk-5ZK2HF6E.js[39m[37m    [2m | [22m[2mhome-component[22m [2m | [22m [36m45.50 kB[39m[37m[2m | [22m               [36m10.72 kB[39m[37m[39m
+[37m[32mchunk-IJZPRQ6U.js[39m[37m    [2m | [22m[2musers-component[22m[2m | [22m [36m25.56 kB[39m[37m[2m | [22m                [36m6.96 kB[39m[37m[39m
+[37m[32mchunk-CKMECCOM.js[39m[37m    [2m | [22m[2m-[22m              [2m | [22m  [36m3.75 kB[39m[37m[2m | [22m              [36m930 bytes[39m[37m[39m
+[37m[39m
+[37mApplication bundle generation complete. [3.058 seconds][39m
+[37m[39m
+[37mOutput location: /Users/9ntonio/Work/crexi/dist/apps/angular-task[39m
+[37m[39m
