@@ -14463,12 +14463,17 @@
       },
       {
         "source": "public-library",
-        "target": "npm:@angular/material",
+        "target": "npm:@angular/router",
         "type": "static"
       },
       {
         "source": "public-library",
-        "target": "npm:@angular/router",
+        "target": "npm:@angular/platform-browser",
+        "type": "static"
+      },
+      {
+        "source": "public-library",
+        "target": "npm:@angular/material",
         "type": "static"
       },
       {
