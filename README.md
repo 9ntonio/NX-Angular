@@ -1,6 +1,6 @@
 # NX-Angular Design System Template
 
-An NX based template that uses Angular & Tailwind to create a boiler-plate design system architecture. It allows for cascading global styles that can be overwritten at the applcation level (if needed).
+An NX based template that uses Angular & Tailwind to create a boiler-plate design system architecture. It allows for cascading global styles that can be overwritten at the application level.
 
 -   Install packages with `npm i`
 -   Serve the application using `npx nx serve angular-task`
