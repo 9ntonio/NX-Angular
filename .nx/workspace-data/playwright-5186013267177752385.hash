@@ -1,5 +1,5 @@
 {
-  "3232630805615607793": {
+  "17058499749089643447": {
     "targets": {
       "e2e": {
         "command": "playwright test",
@@ -13,7 +13,7 @@
           ],
           "description": "Runs Playwright Tests",
           "help": {
-            "command": "npx playwright test --help",
+            "command": "pnpm exec playwright test --help",
             "example": {
               "options": {
                 "workers": 1
@@ -48,7 +48,7 @@
           ],
           "description": "Runs Playwright Tests in src/example.spec.ts in CI",
           "help": {
-            "command": "npx playwright test --help",
+            "command": "pnpm exec playwright test --help",
             "example": {
               "options": {
                 "workers": 1
@@ -102,7 +102,7 @@
           "description": "Runs Playwright Tests in CI",
           "nonAtomizedTarget": "e2e",
           "help": {
-            "command": "npx playwright test --help",
+            "command": "pnpm exec playwright test --help",
             "example": {
               "options": {
                 "workers": 1

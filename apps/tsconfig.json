@@ -8,7 +8,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@crx/public-library": ["apps/public-library/src/index.ts"]
+      "@ui/public-library": ["ui/src/index.ts"]
     }
   },
   "files": [],
