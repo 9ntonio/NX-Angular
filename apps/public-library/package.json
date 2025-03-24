@@ -1,8 +1,0 @@
-{
-  "name": "@crx/public-library",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/core": "^18.0.0",
-    "@angular/common": "^18.0.0"
-  }
-}

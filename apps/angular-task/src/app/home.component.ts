@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { UsersActions } from './+state/users/users.actions';
 import { Observable } from 'rxjs';
-import { CardComponent } from '@crx/public-library';
+import { CardComponent } from '@ui/public-library';
 import { AppState } from './app.state';
 import { selectFilteredUsers } from './+state/users/users.selectors';
 import { User } from './+state/users/user.models';

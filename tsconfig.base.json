@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@crx/public-library": ["apps/public-library/src/index.ts"]
+      "@ui/public-library": ["ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

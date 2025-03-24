@@ -1,6 +1,6 @@
 {
-  "8033317594829289041": {},
-  "6251206152374154080": {
+  "3380583812799082648": {},
+  "2280273612688062632": {
     "apps/angular-task": {
       "targets": {
         "lint": {
@@ -30,7 +30,7 @@
             ],
             "description": "Runs ESLint on project",
             "help": {
-              "command": "npx eslint --help",
+              "command": "pnpm exec eslint --help",
               "example": {
                 "options": {
                   "max-warnings": 0
@@ -72,7 +72,7 @@
             ],
             "description": "Runs ESLint on project",
             "help": {
-              "command": "npx eslint --help",
+              "command": "pnpm exec eslint --help",
               "example": {
                 "options": {
                   "max-warnings": 0
@@ -84,14 +84,14 @@
       }
     }
   },
-  "2086677346941100605": {
-    "apps/public-library": {
+  "8736909935350843326": {
+    "ui": {
       "targets": {
         "lint": {
           "command": "eslint .",
           "cache": true,
           "options": {
-            "cwd": "apps/public-library"
+            "cwd": "ui"
           },
           "inputs": [
             "default",
@@ -114,7 +114,7 @@
             ],
             "description": "Runs ESLint on project",
             "help": {
-              "command": "npx eslint --help",
+              "command": "pnpm exec eslint --help",
               "example": {
                 "options": {
                   "max-warnings": 0
@@ -126,6 +126,47 @@
       }
     }
   },
-  "18439732450142545236": {},
-  "2486063603754363319": {}
+  "3765368937492471433": {},
+  "16081047497415821124": {
+    "apps/angular-task": {
+      "targets": {
+        "lint": {
+          "command": "eslint .",
+          "cache": true,
+          "options": {
+            "cwd": "apps/angular-task"
+          },
+          "inputs": [
+            "default",
+            "^default",
+            "{workspaceRoot}/.eslintrc.json",
+            "{projectRoot}/.eslintrc.json",
+            "{workspaceRoot}/tools/eslint-rules/**/*",
+            {
+              "externalDependencies": [
+                "eslint"
+              ]
+            }
+          ],
+          "outputs": [
+            "{options.outputFile}"
+          ],
+          "metadata": {
+            "technologies": [
+              "eslint"
+            ],
+            "description": "Runs ESLint on project",
+            "help": {
+              "command": "pnpm exec eslint --help",
+              "example": {
+                "options": {
+                  "max-warnings": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
